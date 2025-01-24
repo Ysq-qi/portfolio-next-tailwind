@@ -2,20 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* 
+  1) 全局外層容器：負責最基礎的 RWD 行為 
+     - min-h-screen: 讓內容至少撐滿視窗高度
+     - flex flex-col: 讓 Header / main / Footer 垂直排列
+*/
+.app-wrapper {
+  @apply flex flex-col min-h-screen bg-white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 
+  2) 主要內容容器：負責寬度 1200px + 水平置中 + 響應式邊距 
+     - w-full: 讓容器佔滿可用寬度
+     - max-w-[1200px]: 桌機版最大寬度 1200px
+     - mx-auto: 置中
+*/
+.app-container {
+  @apply w-full max-w-[1200px] mx-auto  ;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* 禁止水平滾動條 */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* 隱藏原生滾動條 */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
