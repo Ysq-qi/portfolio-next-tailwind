@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ProductList from "@/app/product/Productlist";
+import ProductList from "@/app/(public)/product/Productlist";
 
 const ProductPage: React.FC = () => {
   const products = [

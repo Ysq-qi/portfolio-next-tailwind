@@ -9,7 +9,7 @@ interface CategoryButtonProps {
   className?: string;
 }
 
-export const CategoryButton: React.FC<CategoryButtonProps> = ({
+export const CategoryIconButton: React.FC<CategoryButtonProps> = ({
   label,
   icon: Icon,
   className,

@@ -43,7 +43,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ title, price }) => {
 
           {/* 增加數量按鈕 */}
           <Button
-            className="w-12 h-12 text-3xl border-l border-gray-300 bg-white hover:opacity-80 hover:bg-gray-100"
+            className="w-12 h-12 text-3xl text-red-500 border-l border-gray-300 bg-white hover:opacity-80 hover:bg-red-50"
             variant="default"
             size="icon"
             onClick={increaseQuantity}

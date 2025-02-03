@@ -8,7 +8,7 @@ import {
   AccordionContent,
   CategoryAccordionTrigger,
 } from "@/components/ui/overlay/accordion";
-import { categories } from "@/app/product/data/categories";
+import { categories } from "@/app/(public)/product/data/categories";
 
 const CategoryList: React.FC = () => {
   return (

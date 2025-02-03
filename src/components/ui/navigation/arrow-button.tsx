@@ -2,16 +2,20 @@
 
 import React from "react";
 import { Button } from "@/components/ui/form/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronUp, ChevronDown } from "lucide-react";
 
 interface ArrowButtonProps {
-  direction: "left" | "right";
+  direction: "left" | "right" | "up" | "down";
   onClick?: () => void;
   className?: string;
 }
 
 export const ArrowButton: React.FC<ArrowButtonProps> = ({ direction, onClick }) => {
-  const Icon = direction === "left" ? ChevronLeft : ChevronRight;
+  const Icon = direction === "left" ? ChevronLeft :
+               direction === "right" ? ChevronRight :
+               direction === "up" ? ChevronUp :
+               ChevronDown;
+
   return (
     <Button
       onClick={onClick}

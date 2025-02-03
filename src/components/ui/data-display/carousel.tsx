@@ -137,7 +137,7 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
       let timer: NodeJS.Timeout | null = null;
 
       const startAutoPlay = () => {
-        if (timer) clearInterval(timer); // 避免重複啟動
+        if (timer) clearInterval(timer);
         timer = setInterval(() => {
           emblaApi.scrollNext();
         }, intervalMs);

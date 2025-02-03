@@ -39,7 +39,7 @@ const Banner: React.FC = () => {
       </section>
 
       {/* 桌機版 */}
-      <section className="hidden sm:flex w-screen overflow-hidden mt-5">
+      <section className="hidden sm:flex w-screen overflow-hidden my-4">
         <Carousel
           arrowDesign="roundWhite"
           showDots

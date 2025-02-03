@@ -10,7 +10,7 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/navigation/breadcrumb";
-import { categories } from "@/app/product/data/categories";
+import { categories } from "@/app/(public)/product/data/categories";
 
 function findCategoryZh(categoryId: string) {
   const cat = categories.find((c) => c.categoryId === categoryId);

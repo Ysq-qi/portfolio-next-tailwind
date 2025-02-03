@@ -9,7 +9,7 @@ interface ProductCardProps {
   title: string;
   price: string;
   isNew?: boolean;
-  variant?: "home" | "productList";
+  variant?: "home" | "productList" | "recommend";
 }
 
 const cardWidth = cva("", {
@@ -17,6 +17,7 @@ const cardWidth = cva("", {
     variant: {
       home: "w-[190px]",
       productList: "w-[215px]",
+      recommend: "w-[125px]",
     },
   },
   defaultVariants: {
@@ -29,6 +30,7 @@ const cardHeight = cva("", {
     variant: {
       home: "h-[190px]",
       productList: "h-[215px]",
+      recommend: "h-[125px]",
     },
   },
   defaultVariants: {
@@ -41,6 +43,7 @@ const priceColor = cva("", {
     variant: {
       home: "text-[#7f0019]",
       productList: "text-[#7f0019]",
+      recommend: "text-[#7f0019]",
     },
   },
   defaultVariants: {
@@ -53,6 +56,7 @@ const titleHeight = cva("", {
     variant: {
       home: "h-[45px]",
       productList: "h-[50px]",
+      recommend: "h-[50px]",
     },
   },
   defaultVariants: {
@@ -65,6 +69,7 @@ const iconSize = cva("", {
     variant: {
       home: "w-[23px] h-[23px]",
       productList: "w-[23px] h-[23px]",
+      recommend: "hidden",
     },
   },
   defaultVariants: {

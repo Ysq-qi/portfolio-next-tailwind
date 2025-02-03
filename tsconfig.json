@@ -20,8 +20,19 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+
+      "@/components/*": ["./src/components/*"],
       "@/ui/*": ["./src/components/ui/*"],
-      "@/components/*": ["./src/components/*"]
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/configs/*": ["./src/configs/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/types/*": ["./src/types/*"],
+
+      "@/app/*": ["./src/app/*"],
+      "@/admin/*": ["./src/app/(admin)/*"],
+      "@/public/*": ["./src/app/(public)/*"],
+      "@/hidden-footer/*": ["./src/app/(hidden-footer)/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "src/components/layout/header/UserActions"],

@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import * as React from "react";
+import { ContentSlider } from "@/components/ui/navigation/content-slider";
+import ProductCard from "@/components/ui/data-display/product-card";
 
 interface RelatedProductsProps {
   relatedProducts: { image: string; title: string; price: number }[];
@@ -9,17 +10,38 @@ interface RelatedProductsProps {
 
 const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts }) => {
   return (
-    <div className="mt-8">
-      <h2 className="text-lg font-semibold">相關商品</h2>
-      <div className="grid grid-cols-3 gap-4">
-        {relatedProducts.map((product, index) => (
-          <div key={index} className="border rounded p-2">
-            <Image src={product.image} alt={product.title} width={120} height={120} />
-            <p className="text-sm">{product.title}</p>
-            <p className="text-red-500">NT${product.price}</p>
-          </div>
-        ))}
-      </div>
+    <div className="min-h-[200px] flex flex-col space-y-8">
+      <h2 className="text-lg font-semibold">商品推薦</h2>
+
+      {/* 手機版 */}
+      <section className="sm:hidden w-full h-[220px] flex items-center bg-white">
+        <ContentSlider itemWidth={160} pageSizeDesktop={4} pageSizeMobile={2}>
+          {relatedProducts.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              title={product.title}
+              price={`NT$${product.price}`}
+              variant="recommend"
+            />
+          ))}
+        </ContentSlider>
+      </section>
+
+      {/* 電腦版 */}
+      <section className="hidden sm:flex w-[880px] h-[250px] mx-auto mt-6 mb-6 items-center justify-center">
+        <ContentSlider itemWidth={130} pageSizeDesktop={6} pageSizeMobile={2}>
+          {relatedProducts.map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              title={product.title}
+              price={`NT$${product.price}`}
+              variant="recommend"
+            />
+          ))}
+        </ContentSlider>
+      </section>
     </div>
   );
 };

@@ -1,11 +1,9 @@
-// /app/product/[categoryId]/[subCategoryId]/page.tsx
-
 "use client";
 
 import React from "react";
 import { useParams } from "next/navigation";
-import { allProducts } from "@/app/product/data/product-data";
-import ProductList from "@/app/product/Productlist";
+import { allProducts } from "@/app/(public)/product/data/product-data";
+import ProductList from "@/app/(public)/product/Productlist";
 
 const SubCategoryPage: React.FC = () => {
   const params = useParams();

@@ -1,11 +1,11 @@
-import React from 'react';
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
-import '@/app/globals.css';
+import React from "react";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import "@/styles/globals.css";
 import { Toaster } from "@/components/ui/feedback/toaster";
 
 export const metadata = {
-  title: 'Next.js實作網站',
+  title: "Next.js實作網站",
   description: "Next.js 專案",
   icons: {
     icon: "/icons/favicon.ico",

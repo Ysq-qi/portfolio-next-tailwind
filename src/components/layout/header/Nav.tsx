@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -7,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation/navigation-menu";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   {
@@ -15,7 +18,7 @@ const navItems = [
       { title: "男裝", href: "/product/men" },
       { title: "女裝", href: "/product/women" },
       { title: "童裝", href: "/product/kids" },
-      { title: "美容保養", href: "/product/beauty"},
+      { title: "美容保養", href: "/product/beauty" },
       { title: "食品", href: "/product/food" },
     ],
   },
@@ -35,35 +38,46 @@ const navItems = [
   },
 ];
 
-const NavItem: React.FC<{
-  item: typeof navItems[number];
-  className?: string;
-}> = ({ item, className }) => {
+const NavItem: React.FC<{ item: typeof navItems[number]; className?: string }> = ({ item, className }) => {
+  const navRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (navRef.current) {
+      const trigger = navRef.current.querySelector("[data-state='open']") as HTMLElement;
+      if (trigger) {
+        trigger.click();
+      }
+    }
+  }, [pathname]);
+
   if (item.subItems) {
     return (
-      <NavigationMenu className={className}>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="text-black text-[14.5px]">
-              {item.title}
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-2 p-2">
-                {item.subItems.map((subItem, index) => (
-                  <li key={index}>
-                    <Link
-                      href={subItem.href}
-                      className="block px-3 py-2 rounded-md hover:bg-gray-100 text-gray-900"
-                    >
-                      {subItem.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      <div ref={navRef}>
+        <NavigationMenu className={className}>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="text-black text-[14.5px]">
+                {item.title}
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-2 p-2">
+                  {item.subItems.map((subItem, index) => (
+                    <li key={index}>
+                      <Link
+                        href={subItem.href}
+                        className="block px-3 py-2 rounded-xl hover:bg-gray-100 text-gray-600 font-bold"
+                      >
+                        {subItem.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
     );
   }
   return null;

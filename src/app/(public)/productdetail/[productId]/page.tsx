@@ -8,13 +8,55 @@ import ProductDescription from "@/components/product/detail/ProductDescription";
 import ProductDetailAccordions from "@/components/product/detail/ProductDetailAccordions";
 import RelatedProducts from "@/components/product/detail/RelatedProducts";
 
+const DesktopProductDetail: React.FC<{ product: any }> = ({ product }) => {
+  return (
+    <section className="w-[880px] ml-auto my-6 mx-2 hidden sm:block">
+      <div className="flex justify-between gap-8">
+        <ProductImage image={product.image} relatedProducts={product.relatedProducts} />
+        <div className="flex flex-col space-y-8">
+          <ProductInfo title={product.title} price={product.price} />
+          <ProductDetailAccordions
+            paymentMethods={product.paymentMethods}
+            shippingMethods={product.shippingMethods}
+            productDetails={product.productDetails}
+            categories={product.categories}
+          />
+        </div>
+      </div>
+      <div className="flex flex-col space-y-20 mt-6">
+        <ProductDescription description={product.description} />
+        <RelatedProducts relatedProducts={product.relatedProducts} />
+      </div>
+    </section>
+  );
+};
+
+const MobileProductDetail: React.FC<{ product: any }> = ({ product }) => {
+  return (
+    <section className="w-full mx-auto my-6 sm:hidden">
+      {/* 所有內容垂直排列 */}
+      <div className="flex flex-col space-y-6">
+        <ProductImage image={product.image} relatedProducts={product.relatedProducts} />
+        <ProductInfo title={product.title} price={product.price} />
+        <ProductDetailAccordions
+          paymentMethods={product.paymentMethods}
+          shippingMethods={product.shippingMethods}
+          productDetails={product.productDetails}
+          categories={product.categories}
+        />
+        <ProductDescription description={product.description} />
+        <RelatedProducts relatedProducts={product.relatedProducts} />
+      </div>
+    </section>
+  );
+};
+
 const ProductDetailPage: React.FC = () => {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // 模擬 API 請求
     setTimeout(() => {
       try {
         const fetchedProduct = {
@@ -52,127 +94,127 @@ const ProductDetailPage: React.FC = () => {
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味1",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味2",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味3",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味4",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味5",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味6",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味7",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味8",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味9",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味10",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味11",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味12",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味13",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味14",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味15",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味16",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味17",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味18",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味19",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味20",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味21",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味22",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味23",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味24",
               price: 39,
             },
             {
               image: "/images/product001-3.jfif",
-              title: "即食迷你拉麵 雞汁風味",
+              title: "即食迷你拉麵 雞汁風味25",
               price: 39,
             },
           ],
@@ -190,26 +232,10 @@ const ProductDetailPage: React.FC = () => {
   if (error) return <p className="text-center py-10 text-red-500">{error}</p>;
 
   return (
-    <section className="w-[880px] ml-auto my-6 mx-2">
-      <div className="flex justify-between gap-8">
-        <ProductImage image={product.image} relatedProducts={product.relatedProducts} />
-        
-        <div className="flex flex-col space-y-8">
-          <ProductInfo title={product.title} price={product.price} />
-          {/* 將新的 categories 傳給 Accordions */}
-          <ProductDetailAccordions
-            paymentMethods={product.paymentMethods}
-            shippingMethods={product.shippingMethods}
-            productDetails={product.productDetails}
-            categories={product.categories}
-          />
-        </div>
-      </div>
-      <div className="flex flex-col space-y-20 mt-6">
-        <ProductDescription description={product.description} />
-        <RelatedProducts relatedProducts={product.relatedProducts} />
-      </div>
-    </section>
+    <>
+      <DesktopProductDetail product={product} />
+      <MobileProductDetail product={product} />
+    </>
   );
 };
 

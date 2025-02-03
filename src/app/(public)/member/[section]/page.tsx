@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import Orders from "./orders/page";
-import Favorites from "./favorites/page";
-import Profile from "./profile/page";
+import Orders from "@/app/(public)/member/[section]/orders/page";
+import Favorites from "@/app/(public)/member/[section]/favorites/page";
+import Profile from "@/app/(public)/member/[section]/profile/page";
 
 const MemberSectionPage: React.FC = () => {
   const params = useParams();
