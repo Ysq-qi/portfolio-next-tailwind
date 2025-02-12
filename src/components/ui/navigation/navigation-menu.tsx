@@ -72,7 +72,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "absolute left-0 w-[200px] top-full min-w-max rounded-md bg-white shadow-md p-2 z-10", 
+      "absolute left-0 w-[200px] top-full min-w-max rounded-md bg-white shadow-md p-2 z-50", 
       className
     )}
     {...props}

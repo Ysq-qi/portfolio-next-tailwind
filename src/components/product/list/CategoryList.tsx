@@ -8,7 +8,7 @@ import {
   AccordionContent,
   CategoryAccordionTrigger,
 } from "@/components/ui/overlay/accordion";
-import { categories } from "@/app/(public)/product/data/categories";
+import { categories } from "@/data/mockData";
 
 const CategoryList: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const CategoryList: React.FC = () => {
             {/* 主分類 */}
             <Link href={`/product/${cat.categoryId}`} passHref>
               <span className="text-gray-900 font-bold hover:underline text-[14.5px] cursor-pointer">
-                {cat.titleZh}
+                {cat.labelZh}
               </span>
             </Link>
             <CategoryAccordionTrigger />

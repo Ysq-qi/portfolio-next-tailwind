@@ -5,7 +5,7 @@ import { ContentSlider } from "@/components/ui/navigation/content-slider";
 import ProductCard from "@/components/ui/data-display/product-card";
 
 interface RelatedProductsProps {
-  relatedProducts: { image: string; title: string; price: number }[];
+  relatedProducts: { id: string; image: string; title: string; price: string }[];
 }
 
 const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts }) => {
@@ -19,9 +19,10 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts }) =>
           {relatedProducts.map((product, index) => (
             <ProductCard
               key={index}
+              id={product.id}
               image={product.image}
               title={product.title}
-              price={`NT$${product.price}`}
+              price={product.price}
               variant="recommend"
             />
           ))}
@@ -34,9 +35,10 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts }) =>
           {relatedProducts.map((product, index) => (
             <ProductCard
               key={index}
+              id={product.id}
               image={product.image}
               title={product.title}
-              price={`NT$${product.price}`}
+              price={product.price}
               variant="recommend"
             />
           ))}

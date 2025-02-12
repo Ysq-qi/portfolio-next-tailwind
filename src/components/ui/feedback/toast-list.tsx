@@ -2,11 +2,10 @@
 
 import { toast } from "@/hooks/usetoast";
 import { CheckIcon } from "@/components/ui/icons/icons";
-import { throttle } from "@/lib/utils/throttle";
 import Loading from "@/components/ui/feedback/loading";
 
 const ToastList = {
-  showAddSuccess: throttle(() => {
+  showAddSuccess: () => {
     const newToast = toast({
       title: "加入成功",
       description: "",
@@ -16,9 +15,9 @@ const ToastList = {
         if (!open) newToast?.dismiss();
       },
     });
-  }, 2000),
+  },
 
-  showDeleteSuccess: throttle(() => {
+  showDeleteSuccess: () => {
     const newToast = toast({
       title: "刪除成功",
       description: "",
@@ -28,9 +27,9 @@ const ToastList = {
         if (!open) newToast?.dismiss();
       },
     });
-  }, 2000),
+  },
 
-  showSubmitFail: throttle(() => {
+  showSubmitFail: () => {
     const newToast = toast({
       title: "提交未成功",
       description: "",
@@ -39,9 +38,9 @@ const ToastList = {
         if (!open) newToast?.dismiss();
       },
     });
-  }, 2000),
+  },
 
-  showSelectWarning: throttle(() => {
+  showSelectWarning: () => {
     const newToast = toast({
       title: "請先選取選項",
       description: "",
@@ -50,10 +49,10 @@ const ToastList = {
         if (!open) newToast?.dismiss();
       },
     });
-  }, 2000),
+  },
 
-  showAddLoading: throttle(() => {
-    const newToast = toast({
+  showAddLoading: () => {
+    return toast({
       title: "",
       description: (
         <div className="flex flex-col items-center justify-center space-y-2">
@@ -62,11 +61,8 @@ const ToastList = {
         </div>
       ),
       variant: "loading",
-      onOpenChange: (open) => {
-        if (!open) newToast?.dismiss();
-      },
     });
-  }, 2000),
+  },
 };
 
 export default ToastList;

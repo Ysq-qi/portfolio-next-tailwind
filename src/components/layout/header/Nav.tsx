@@ -15,11 +15,11 @@ const navItems = [
   {
     title: "商品介紹",
     subItems: [
-      { title: "男裝", href: "/product/men" },
-      { title: "女裝", href: "/product/women" },
-      { title: "童裝", href: "/product/kids" },
-      { title: "美容保養", href: "/product/beauty" },
       { title: "食品", href: "/product/food" },
+      { title: "女裝", href: "/product/women" },
+      { title: "男裝", href: "/product/men" },
+      { title: "寢具織品", href: "/product/bedding" },
+      { title: "家具", href: "/product/furniture" },
     ],
   },
   {

@@ -2,30 +2,44 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import { allProducts } from "@/app/(public)/product/data/product-data";
 import ProductList from "@/app/(public)/product/Productlist";
-import { categories } from "@/app/(public)/product/data/categories";
+import { allProducts, categories } from "@/data/mockData";
 
 const CategoryPage: React.FC = () => {
   const params = useParams();
   const categoryId = params?.categoryId as string;
 
-  // 找不到 or 不存在
   if (!categoryId || !allProducts[categoryId]) {
     return <div className="text-center text-gray-600">此分類不存在</div>;
   }
 
-  // 取得該主分類中文名稱
+  // 找到該主分類
   const mainCat = categories.find((c) => c.categoryId === categoryId);
-  const categoryNameZh = mainCat ? mainCat.titleZh : categoryId;
+  const categoryTitle = mainCat?.labelZh ?? "";
+  const categoryImage = mainCat?.image ?? ""; // 這裡可能是 ""，需要處理
 
-  // 合併所有 subCategory => flatten
+  // Flatten 所有 subCategory 的商品
   const subcategories = Object.values(allProducts[categoryId]);
   const mergedProducts = subcategories.flat();
 
+  // 做一層 map，將 number => string
+  const finalProducts = mergedProducts.map((product) => ({
+    id: product.id,
+    image: Array.isArray(product.image) ? product.image[0] : product.image || "",
+    title: product.title,
+    price: product.price.toString(),
+    isNew: product.isNew,
+    isSoldOut: product.isSoldOut,
+    isHotSale: product.isHotSale,
+  }));
+
   return (
     <main>
-      <ProductList products={mergedProducts} />
+      <ProductList
+        products={finalProducts}
+        categoryImage={categoryImage}
+        categoryTitle={categoryTitle}
+      />
     </main>
   );
 };
