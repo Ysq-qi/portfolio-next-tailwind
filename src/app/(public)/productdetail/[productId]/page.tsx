@@ -17,7 +17,7 @@ const DesktopProductDetail: React.FC<{ product: any }> = ({ product }) => {
       <div className="flex justify-between gap-8">
         <ProductImage images={product.image} />
         <div className="flex flex-col space-y-8">
-          <ProductInfo title={product.title} price={product.price} />
+          <ProductInfo title={product.title} price={product.price} isSoldOut={product.isSoldOut} />
           <ProductDetailAccordions
             paymentMethods={product.paymentMethods}
             shippingMethods={product.shippingMethods}
@@ -40,7 +40,7 @@ const MobileProductDetail: React.FC<{ product: any }> = ({ product }) => {
       {/* 所有內容垂直排列 */}
       <div className="flex flex-col space-y-6">
         <ProductImage images={product.image} />
-        <ProductInfo title={product.title} price={product.price} />
+        <ProductInfo title={product.title} price={product.price} isSoldOut={product.isSoldOut}/>
         <ProductDetailAccordions
           paymentMethods={product.paymentMethods}
           shippingMethods={product.shippingMethods}
@@ -73,7 +73,7 @@ const ProductDetailPage: React.FC = () => {
   
           const finalProduct = {
             ...found,
-            image: images, // 確保 image 是陣列
+            image: images,
           };
   
           setProduct(finalProduct);

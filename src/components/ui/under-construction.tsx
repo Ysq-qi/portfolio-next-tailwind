@@ -7,7 +7,7 @@ const UnderConstruction: React.FC = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center">
+    <div className="flex flex-col items-center justify-center h-[60vh] text-center">
       <h1 className="text-3xl font-bold text-gray-800">🚧 頁面施工中 🚧</h1>
       <p className="text-gray-600 mt-2">此頁面仍在開發中，敬請期待！</p>
       <button

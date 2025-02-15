@@ -196,6 +196,8 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         categories: [
           { parent: "食品", children: ["速食 | 調理"] },
         ],
+        paymentMethods: ["信用卡", "信用卡分期","超商付款"], 
+        shippingMethods: ["宅配", "超商取貨", "商店門市自取"],
         /* 推薦商品 */
         relatedProducts: [
           {

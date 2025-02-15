@@ -1,37 +1,62 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { useParams } from "next/navigation";
-import ProductList from "@/app/(public)/product/Productlist";
+import ProductList from "@/components/product/list/ProductList";
 import { allProducts, categories } from "@/data/mockData";
+import { filterProducts } from "@/lib/utils/filterProducts";
+import { useFilterContext } from "@/context/FilterContext";
+
+// 日後放到types資料夾內
+interface Product {
+  id: string;
+  image: string;
+  title: string;
+  price: string;
+  isNew?: boolean;
+  isSoldOut?: boolean;
+  isHotSale?: boolean;
+  shippingMethods?: string[];
+  paymentMethods?: string[];
+}
 
 const CategoryPage: React.FC = () => {
-  const params = useParams();
-  const categoryId = params?.categoryId as string;
+  const { categoryId } = useParams() as { categoryId: string };
+
+  // 從 context 取付款/運送狀態
+  const {
+    selectedPaymentMethods,
+    selectedShippingMethods
+  } = useFilterContext();
 
   if (!categoryId || !allProducts[categoryId]) {
     return <div className="text-center text-gray-600">此分類不存在</div>;
   }
 
-  // 找到該主分類
+  // 找到主分類
   const mainCat = categories.find((c) => c.categoryId === categoryId);
   const categoryTitle = mainCat?.labelZh ?? "";
-  const categoryImage = mainCat?.image ?? ""; // 這裡可能是 ""，需要處理
+  const categoryImage = mainCat?.image ?? "";
 
-  // Flatten 所有 subCategory 的商品
+  // 拿到該主分類下所有商品
   const subcategories = Object.values(allProducts[categoryId]);
-  const mergedProducts = subcategories.flat();
+  const mergedRaw = subcategories.flat();
 
-  // 做一層 map，將 number => string
-  const finalProducts = mergedProducts.map((product) => ({
-    id: product.id,
-    image: Array.isArray(product.image) ? product.image[0] : product.image || "",
-    title: product.title,
-    price: product.price.toString(),
-    isNew: product.isNew,
-    isSoldOut: product.isSoldOut,
-    isHotSale: product.isHotSale,
+  const mergedProducts: Product[] = mergedRaw.map((pd) => ({
+    id: pd.id,
+    image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
+    title: pd.title,
+    price: pd.price.toString(),
+    isNew: pd.isNew,
+    isSoldOut: pd.isSoldOut,
+    isHotSale: pd.isHotSale,
+    shippingMethods: pd.shippingMethods ?? [],
+    paymentMethods: pd.paymentMethods ?? [],
   }));
+
+  const finalProducts = useMemo(() => {
+    return filterProducts(mergedProducts, selectedPaymentMethods, selectedShippingMethods);
+  }, [mergedProducts, selectedPaymentMethods, selectedShippingMethods]);
 
   return (
     <main>

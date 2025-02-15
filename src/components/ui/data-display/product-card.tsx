@@ -31,7 +31,7 @@ const cardVariants = {
         recommend: "w-[125px]",
       },
     },
-    defaultVariants: { variant: "home" },
+    defaultVariants: { variant: "productList" },
   }),
 
   height: cva("", {
@@ -42,7 +42,7 @@ const cardVariants = {
         recommend: "h-[125px]",
       },
     },
-    defaultVariants: { variant: "home" },
+    defaultVariants: { variant: "productList" },
   }),
 
   priceColor: cva("text-[#7f0019]", {
@@ -53,7 +53,7 @@ const cardVariants = {
         recommend: "text-[#7f0019]",
       },
     },
-    defaultVariants: { variant: "home" },
+    defaultVariants: { variant: "productList" },
   }),
 
   titleHeight: cva("", {
@@ -61,10 +61,10 @@ const cardVariants = {
       variant: {
         home: "h-[45px]",
         productList: "h-[50px]",
-        recommend: "h-[50px]",
+        recommend: "h-[70px]",
       },
     },
-    defaultVariants: { variant: "home" },
+    defaultVariants: { variant: "productList" },
   }),
 
   iconSize: cva("", {
@@ -75,7 +75,7 @@ const cardVariants = {
         recommend: "hidden",
       },
     },
-    defaultVariants: { variant: "home" },
+    defaultVariants: { variant: "productList" },
   }),
 };
 
@@ -147,7 +147,7 @@ const HotSaleBadge: React.FC<{ isHotSale?: boolean }> = ({ isHotSale }) => {
   );
 };
 
-// **商品卡片組件**
+// 商品卡片組件
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
   image,
@@ -162,58 +162,67 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleAddToCart = async () => {
-    // **顯示 Loading，並接收 toast 實例**
+    // 顯示 Loading，並接收 toast 實例
     const loadingToast = ToastList.showAddLoading();
   
-    // **模擬 API 請求 (1 秒後完成)**
+    // 模擬 API 請求
     setTimeout(() => {
       loadingToast?.dismiss();
       setDialogOpen(true);
-    }, 1000);
+    }, 500);
   };
   
 
   return (
     <>
-      <Card className={cn(cardVariants.width({ variant }), "shadow hover:shadow-lg transition-shadow rounded-lg overflow-hidden")}>
-        {/* 點擊圖片可跳轉至詳情頁 */}
-        <Link href={`/productdetail/${id}`} passHref>
+      <Link href={`/productdetail/${id}`} passHref>
+        <Card className={cn(cardVariants.width({ variant }), "shadow hover:shadow-lg transition-shadow rounded-lg overflow-hidden")}>
+          {/* 點擊圖片可跳轉至詳情頁 */}
           <div className={cn("relative", cardVariants.width({ variant }), cardVariants.height({ variant }))}>
             <Image src={displayImage} alt={title} fill style={{ objectFit: "cover" }} className="rounded-t-md" />
             <NewBadge isNew={isNew} />
             <SoldOutBadge isSoldOut={isSoldOut} />
             <HotSaleBadge isHotSale={isHotSale} />
           </div>
-        </Link>
 
-        {/* 商品內容 */}
-        <CardContent className="p-2">
-          <h3 className={cn("text-base font-bold text-gray-800 pt-1", cardVariants.titleHeight({ variant }))}>
-            {title}
-          </h3>
-          <p className={cn("pt-2 text-base font-bold", cardVariants.priceColor({ variant }))}>NT${price}</p>
-        </CardContent>
+          {/* 商品內容 */}
+          <CardContent className="p-2">
+            <h3 className={cn("text-base font-bold text-gray-800 pt-1", cardVariants.titleHeight({ variant }))}>
+              {title}
+            </h3>
+            <p className={cn("pt-2 text-base font-bold", cardVariants.priceColor({ variant }))}>NT${price}</p>
+          </CardContent>
 
-        {/* 底部按鈕 */}
-        <CardFooter className="flex justify-between items-center pb-2 pl-2 pr-2">
-          {variant !== "recommend" && (
-            <>
-              <button className={cn("flex items-center justify-center rounded-full bg-white", cardVariants.iconSize({ variant }))} aria-label="Add to Favorites">
-                <Heart className={cn("text-gray-600", cardVariants.iconSize({ variant }))} />
-              </button>
+          {/* 底部按鈕 */}
+          <CardFooter className="flex justify-between items-center pb-2 pl-2 pr-2">
+            {variant !== "recommend" && (
+              <>
+                <button 
+                  className={cn("flex items-center justify-center rounded-full bg-white", cardVariants.iconSize({ variant }))} aria-label="Add to Favorites"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                  }}
+                >
+                  <Heart className={cn("text-gray-600", cardVariants.iconSize({ variant }))} />
+                </button>
 
-              {/* 點擊購物車 */}
-              <button
-                className={cn("flex items-center justify-center rounded-full bg-white", cardVariants.iconSize({ variant }))} 
-                aria-label="Add to Cart"
-                onClick={handleAddToCart}
-              >
-                <ShoppingCart className={cn("text-gray-600", cardVariants.iconSize({ variant }))} />
-              </button>
-            </>
-          )}
-        </CardFooter>
-      </Card>
+                {/* 點擊購物車 */}
+                <button
+                  className={cn("flex items-center justify-center rounded-full bg-white", cardVariants.iconSize({ variant }))} 
+                  aria-label="Add to Cart"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleAddToCart();
+                  }}                >
+                  <ShoppingCart className={cn("text-gray-600", cardVariants.iconSize({ variant }))} />
+                </button>
+              </>
+            )}
+          </CardFooter>
+        </Card>
+      </Link>
 
       {/* ProductDialog */}
       <ProductDialog

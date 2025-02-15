@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/form/button";
 interface ProductInfoProps {
   title: string;
   price: number;
+  isSoldOut?: boolean;
 }
 
-const ProductInfo: React.FC<ProductInfoProps> = ({ title, price }) => {
+const ProductInfo: React.FC<ProductInfoProps> = ({ title, price, isSoldOut = false }) => {
   const [quantity, setQuantity] = useState(1);
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
@@ -54,16 +55,27 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ title, price }) => {
       </div>
 
       {/* 操作按鈕區塊 */}
-      <div className="flex space-x-4">
-        <Button className="w-1/2 h-[40px] rounded-xl bg-gray-200 hover:bg-gray-300 text-black font-bold">
-          加入購物車
-        </Button>
-        <Button className="w-1/2 h-[40px] rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-bold">
-          立即結帳
-        </Button>
-      </div>
+      {isSoldOut ? (
+        <SoldOutButton />
+      ) : (
+        <div className="flex space-x-4">
+          <Button className="w-1/2 h-[40px] rounded-xl bg-gray-200 hover:bg-gray-300 text-black font-bold">
+            加入購物車
+          </Button>
+          <Button className="w-1/2 h-[40px] rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-bold">
+            立即結帳
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
+
+// 已售完按鈕
+const SoldOutButton: React.FC = () => (
+  <Button className="w-full h-[40px] rounded-xl bg-gray-200 text-black font-black cursor-not-allowed" disabled>
+    已售完
+  </Button>
+);
 
 export default ProductInfo;

@@ -2,16 +2,17 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Carousel, CarouselItem } from "@/components/ui/data-display/carousel";
 
 // 橫幅區塊
 const Banner: React.FC = () => {
   const bannerImages = [
-    "/images/carousel001.jpg",
-    "/images/carousel002.jpg",
-    "/images/carousel003.jpg",
-    "/images/carousel004.jpg",
-    "/images/carousel005.jpg",
+    { src: "/images/carousel001.jpg", link: "/activity/sale1" },
+    { src: "/images/carousel002.jpg", link: "/activity/sale2" },
+    { src: "/images/carousel003.jpg", link: "/activity/sale3" },
+    { src: "/images/carousel004.jpg", link: "/activity/sale4" },
+    { src: "/images/carousel005.jpg", link: "/activity/sale5" },
   ];
 
   return (
@@ -24,15 +25,17 @@ const Banner: React.FC = () => {
           autoPlay
           className="w-full h-full"
         >
-          {bannerImages.map((src, index) => (
+          {bannerImages.map((item, index) => (
             <CarouselItem key={index} className="w-full h-full relative">
-              <Image
-                src={src}
-                alt={`Carousel Image ${index + 1}`}
-                width={500}
-                height={200}
-                className="w-full h-full object-cover"
-              />
+              <Link href={item.link}>
+                <Image
+                  src={item.src}
+                  alt={`Carousel Image ${index + 1}`}
+                  width={500}
+                  height={200}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
             </CarouselItem>
           ))}
         </Carousel>
@@ -46,15 +49,17 @@ const Banner: React.FC = () => {
           autoPlay
           className="w-full h-full"
         >
-          {bannerImages.map((src, index) => (
+          {bannerImages.map((item, index) => (
             <CarouselItem key={index}>
-              <Image
-                src={src}
-                alt={`Carousel Image ${index + 1}`}
-                width={1200}
-                height={400}
-                className="w-full h-full object-cover"
-              />
+              <Link href={item.link}>
+                <Image
+                  src={item.src}
+                  alt={`Carousel Image ${index + 1}`}
+                  width={1200}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
             </CarouselItem>
           ))}
         </Carousel>
