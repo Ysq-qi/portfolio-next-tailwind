@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { ContentSlider } from "@/components/ui/navigation/content-slider";
-import ProductCard from "@/components/ui/data-display/product-card";
+import ProductCard from "@/components/product/common/ProductCard";
 
 interface RelatedProductsProps {
   relatedProducts: { id: string; image: string; title: string; price: string }[];

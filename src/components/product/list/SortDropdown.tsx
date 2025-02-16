@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -8,25 +8,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/form/select";
+import { useFilterContext } from "@/context/FilterContext";
 
 const sortOptions = [
+  { value: "default", label: "預設排序" },
   { value: "price-asc", label: "價格：由低到高" },
   { value: "price-desc", label: "價格：由高到低" },
-  { value: "name-asc", label: "名稱：A-Z" },
-  { value: "name-desc", label: "名稱：Z-A" },
 ];
 
 const SortDropdown: React.FC = () => {
-  const [selected, setSelected] = useState<string>(sortOptions[0].value);
+  const { selectedSort, setSelectedSort } = useFilterContext();
 
   const handleChange = (value: string) => {
-    setSelected(value);
+    if (value === "price-asc" || value === "price-desc" || value === "default") {
+      setSelectedSort(value);
+    }
   };
 
   return (
     <div className="flex items-center justify-end space-x-4">
-      {/* 使用 Select */}
-      <Select value={selected} onValueChange={handleChange}>
+      <Select value={selectedSort} onValueChange={handleChange}>
         <SelectTrigger id="sortSelect" className="w-[160px]">
           <SelectValue placeholder="選擇排序" />
         </SelectTrigger>

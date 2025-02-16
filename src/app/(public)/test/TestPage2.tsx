@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ToastList from "@/components/ui/feedback/toast-list";
-import { ProductDialog } from "@/components/ui/overlay/product-dialog";
+import { ProductDialog } from "@/components/product/common/ProductDialog";
 
 const TestPage2: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);

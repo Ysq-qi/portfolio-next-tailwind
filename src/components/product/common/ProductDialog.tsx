@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/overlay/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/overlay/dialog";
 import { Button } from "@/components/ui/form/button";
 import { Separator } from "@/components/ui/utils/separator";
 import Image from "next/image";

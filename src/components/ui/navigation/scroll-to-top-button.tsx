@@ -12,7 +12,7 @@ const ScrollToTopButton: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       // 滾動超過 px 時顯示按鈕，否則隱藏
-      setIsVisible(window.scrollY > 200);
+      setIsVisible(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);

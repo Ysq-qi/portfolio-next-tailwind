@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ProductCard from "@/components/ui/data-display/product-card";
+import ProductCard from "@/components/product/common/ProductCard";
 import ProductCardSkeleton from "@/components/ui/feedback/product-card-skeleton";
 
 interface Product {

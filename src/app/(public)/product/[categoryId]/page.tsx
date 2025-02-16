@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useParams } from "next/navigation";
 import ProductList from "@/components/product/list/ProductList";
 import { allProducts, categories } from "@/data/mockData";
@@ -23,10 +23,14 @@ interface Product {
 const CategoryPage: React.FC = () => {
   const { categoryId } = useParams() as { categoryId: string };
 
-  // 從 context 取付款/運送狀態
   const {
+    selectedMinPrice,
+    selectedMaxPrice,
     selectedPaymentMethods,
-    selectedShippingMethods
+    selectedShippingMethods,
+    selectedSort,
+    setGlobalMinPrice,
+    setGlobalMaxPrice,
   } = useFilterContext();
 
   if (!categoryId || !allProducts[categoryId]) {
@@ -54,9 +58,61 @@ const CategoryPage: React.FC = () => {
     paymentMethods: pd.paymentMethods ?? [],
   }));
 
+  // 商品(父)類別加載時 獲取商品價格最大值與最小值
+  useEffect(() => {
+    if (mergedProducts.length > 0) {
+      const prices = mergedProducts.map(p => parseInt(p.price, 10));
+      const min = Math.min(...prices);
+      const max = Math.max(...prices);
+      setGlobalMinPrice(min);
+      setGlobalMaxPrice(max);
+    } else {
+      setGlobalMinPrice(null);
+      setGlobalMaxPrice(null);
+    }
+  }, [mergedProducts, setGlobalMinPrice, setGlobalMaxPrice]);
+
+  // 用useMemo做篩選 + 價格區間 + 排序
   const finalProducts = useMemo(() => {
-    return filterProducts(mergedProducts, selectedPaymentMethods, selectedShippingMethods);
-  }, [mergedProducts, selectedPaymentMethods, selectedShippingMethods]);
+    // 用filterProducts處理付款 / 運送方式
+    let filtered = filterProducts(
+      mergedProducts,
+      selectedPaymentMethods,
+      selectedShippingMethods
+    );
+
+    // 價格區間
+    if (selectedMinPrice || selectedMaxPrice) {
+      const min = selectedMinPrice ? parseInt(selectedMinPrice, 10) : 0;
+      const max = selectedMaxPrice ? parseInt(selectedMaxPrice, 10) : Infinity;
+      filtered = filtered.filter((p) => {
+        const priceVal = parseInt(p.price, 10) || 0;
+        return priceVal >= min && priceVal <= max;
+      });
+    }
+
+    // 最後做排序
+    switch (selectedSort) {
+      case "price-asc":
+        filtered = [...filtered].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        break;
+      case "price-desc":
+        filtered = [...filtered].sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+        break;
+      default:
+        break;
+    }
+
+    return filtered;
+  }, [
+    mergedProducts,
+    selectedPaymentMethods,
+    selectedShippingMethods,
+    selectedSort,
+    selectedMinPrice,
+    selectedMaxPrice,
+  ]);
+
 
   return (
     <main>

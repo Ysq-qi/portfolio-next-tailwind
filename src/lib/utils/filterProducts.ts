@@ -17,7 +17,6 @@ export function filterProducts(
   selectedPaymentMethods: string[],
   selectedShippingMethods: string[]
 ): Product[] {
-  // 若沒有選擇任何付款方式/運送方式，則不做篩選
   const noPaymentSelected = selectedPaymentMethods.length === 0;
   const noShippingSelected = selectedShippingMethods.length === 0;
 

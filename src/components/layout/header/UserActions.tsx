@@ -5,10 +5,10 @@ import { User } from 'lucide-react';
 import { HoverCard, HoverCardTrigger, HoverCardContent } from '@/components/ui/overlay/hover-card';
 
 const userActionItems = [
-  { title: "訂單查詢", href: "/orders" },
+  { title: "訂單查詢", href: "/member/orders" },
   { title: "會員專區", href: "/member" },
-  { title: "我的收藏", href: "/favorites" },
-  { title: "我的優惠券", href: "/coupons" },
+  { title: "我的收藏", href: "/member/favorites" },
+  { title: "我的優惠券", href: "/member/coupons" },
   { title: "會員登入/註冊", href: "/login" },
 ];
 

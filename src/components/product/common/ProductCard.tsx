@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Heart, ShoppingCart } from "lucide-react";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
-import { ProductDialog } from "@/components/ui/overlay/product-dialog";
+import { ProductDialog } from "@/components/product/common/ProductDialog";
 import ToastList from "@/components/ui/feedback/toast-list";
 
 interface ProductCardProps {
