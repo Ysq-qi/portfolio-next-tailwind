@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Card, CardContent, CardFooter } from "@/components/ui/data-display/card";
 import Image from "next/image";
-import { Heart, ShoppingCart } from "lucide-react";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
+import { Card, CardContent, CardFooter } from "@/components/ui/data-display/card";
+import { Heart, ShoppingCart } from "lucide-react";
 import { ProductDialog } from "@/components/product/common/ProductDialog";
 import ToastList from "@/components/ui/feedback/toast-list";
 
@@ -14,7 +14,7 @@ interface ProductCardProps {
   id: string;
   image: string | string[];
   title: string;
-  price: string;
+  price: number;
   isNew?: boolean;
   isSoldOut?: boolean;
   isHotSale?: boolean;

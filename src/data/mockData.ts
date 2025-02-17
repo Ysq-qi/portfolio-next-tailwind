@@ -1,3 +1,5 @@
+import { ProductDetail } from "@/types";
+
 // 用於 Nav / 側邊欄 (主分類 + 子分類)
 export interface NavCategory {
   categoryId: string;
@@ -9,44 +11,6 @@ export interface NavCategory {
     labelEn: string;
     image: string;
   }[];
-}
-
-// 用於商品詳細資料
-export interface ProductDetail {
-  id: string;
-  title: string;
-  price: number;
-  image?: string[] | string;
-  description: string;
-  descriptionImage?: { image: string }[] | [];
-  stock: number;
-  isNew?: boolean;
-  isSoldOut?: boolean;
-  isHotSale?: boolean;
-  productDetails: { label: string; value: string }[];
-  categories: { parent: string; children: string[] }[];
-  paymentMethods?: string[];
-  shippingMethods?: string[];
-  relatedProducts: {
-    id: string;
-    image: string;
-    title: string;
-    price: number;
-  }[];
-  reviews: {
-    reviewId: string;
-    userId: string;
-    rating: number;
-    comment: string;
-    timestamp: string;
-  }[];
-  averageRating: number;
-  totalReviews: number;
-  analytics: {
-    pageViews: number;       // 被查看次數
-    wishListCount: number;   // 收藏/願望清單次數
-    salesData: { date: string; unitsSold: number }[];
-  };
 }
 
 // Nav 與商品側邊欄的「商品分類」資料  每個主分類 + 子分類 + 對應圖片

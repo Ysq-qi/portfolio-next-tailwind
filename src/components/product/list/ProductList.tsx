@@ -6,21 +6,11 @@ import ProductCard from "@/components/product/common/ProductCard";
 import ProductCardSkeleton from "@/components/ui/feedback/product-card-skeleton";
 import SortDropdown from "@/components/product/list/SortDropdown";
 import NoFilteredProducts from "@/components/product/list/NoFilteredProducts";
-import Loading from "@/components/ui/feedback/loading"
-
-// 日後放到types資料夾內
-interface Product {
-  id: string;
-  image: string;
-  title: string;
-  price: string;
-  isNew?: boolean;
-  isSoldOut?: boolean;
-  isHotSale?: boolean;
-}
+import Loading from "@/components/ui/feedback/loading";
+import { ProductListItem } from "@/types";
 
 interface ProductListProps {
-  products: Product[];
+  products: ProductListItem[];
   categoryImage?: string;
   categoryTitle?: string;
 }
@@ -30,16 +20,14 @@ const ProductList: React.FC<ProductListProps> = ({
   categoryImage = "",
   categoryTitle = "",
 }) => {
-  const [isLoading, setIsLoading] = useState(true);  // 商品加載用
-  const [isFiltering, setIsFiltering] = useState(false); // 商品篩選用
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFiltering, setIsFiltering] = useState(false);
 
-  // 控制商品加載的Loading 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  // 控制商品篩選的Filtering
   useEffect(() => {
     if (products.length === 0) {
       setIsFiltering(true);
@@ -55,8 +43,16 @@ const ProductList: React.FC<ProductListProps> = ({
       <div className="mb-6">
         {categoryImage && <CategoryBanner image={categoryImage} title={categoryTitle} />}
       </div>
-      
-      {hasNoProducts ? (isFiltering ? <Loading /> : <div className="flex items-start justify-center w-full h-[600px]"><NoFilteredProducts /></div>) : (
+
+      {hasNoProducts ? (
+        isFiltering ? (
+          <Loading />
+        ) : (
+          <div className="flex items-start justify-center w-full h-[600px]">
+            <NoFilteredProducts />
+          </div>
+        )
+      ) : (
         <>
           <div className="flex justify-between items-center mb-8">
             <div className="text-sm text-gray-700 font-medium ml-2">
@@ -66,7 +62,10 @@ const ProductList: React.FC<ProductListProps> = ({
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {products.map((product, index) => isLoading ? (<ProductCardSkeleton key={index} variant="productList" />) : (
+            {products.map((product, index) =>
+              isLoading ? (
+                <ProductCardSkeleton key={index} variant="productList" />
+              ) : (
                 <ProductCard
                   key={product.id}
                   id={product.id}

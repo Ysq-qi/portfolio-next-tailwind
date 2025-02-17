@@ -44,10 +44,14 @@ function CarouselArrowButton({
   const isLeft = position === "left";
   const Icon = isLeft ? ArrowLeft : ArrowRight;
 
-  const handleClick = () => {
-    if (!emblaApi) return;
-    isLeft ? emblaApi.scrollPrev() : emblaApi.scrollNext();
-  };
+const handleClick = () => {
+  if (!emblaApi) return;
+  if (isLeft) {
+    emblaApi.scrollPrev();
+  } else {
+    emblaApi.scrollNext();
+  }
+};
 
   return (
     <Button

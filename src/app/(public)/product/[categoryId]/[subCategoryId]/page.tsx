@@ -7,7 +7,6 @@ import { allProducts, categories } from "@/data/mockData";
 import { filterProducts } from "@/lib/utils/filterProducts";
 import { useFilterContext } from "@/context/FilterContext";
 
-// 日後放到types資料夾內
 interface Product {
   id: string;
   image: string;
@@ -33,31 +32,10 @@ const SubCategoryPage: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
-  if (!categoryId || !subCategoryId) {
-    return <div className="text-center text-gray-600">找不到此分類</div>;
-  }
-
-  // 驗證主分類
   const mainCat = categories.find((c) => c.categoryId === categoryId);
-  if (!mainCat) {
-    return <div className="text-center text-gray-600">沒有此主分類</div>;
-  }
-
-  // 驗證子分類
-  const subCategory = mainCat.subCategories.find((sub) => sub.labelEn === subCategoryId);
-  if (!subCategory) {
-    return <div className="text-center text-gray-600">沒有此子分類</div>;
-  }
-
-  // 取出該子分類商品
+  const subCategory = mainCat?.subCategories.find((sub) => sub.labelEn === subCategoryId);
   const subCategoryMap = allProducts[categoryId];
-  if (!subCategoryMap) {
-    return <div className="text-center text-gray-600">沒有此主分類</div>;
-  }
-  const productsRaw = subCategoryMap[subCategoryId];
-  if (!productsRaw) {
-    return <div className="text-center text-gray-600">沒有找到相關商品</div>;
-  }
+  const productsRaw = subCategoryMap?.[subCategoryId] || [];
 
   const mergedProducts: Product[] = productsRaw.map((pd) => ({
     id: pd.id,
@@ -71,7 +49,6 @@ const SubCategoryPage: React.FC = () => {
     paymentMethods: pd.paymentMethods ?? [],
   }));
 
-  // 商品(子)類別加載時，獲取商品價格最大值與最小值
   useEffect(() => {
     if (mergedProducts.length > 0) {
       const prices = mergedProducts.map((p) => parseInt(p.price, 10));
@@ -85,12 +62,9 @@ const SubCategoryPage: React.FC = () => {
     }
   }, [mergedProducts, setGlobalMinPrice, setGlobalMaxPrice]);
 
-  // 用 useMemo 做篩選 + 價格區間 + 排序
   const finalProducts = useMemo(() => {
-    // 先用 filterProducts 處理付款方式 / 運送方式篩選
     let filtered = filterProducts(mergedProducts, selectedPaymentMethods, selectedShippingMethods);
 
-    // 價格區間篩選
     if (selectedMinPrice || selectedMaxPrice) {
       const min = selectedMinPrice ? parseInt(selectedMinPrice, 10) : 0;
       const max = selectedMaxPrice ? parseInt(selectedMaxPrice, 10) : Infinity;
@@ -100,7 +74,6 @@ const SubCategoryPage: React.FC = () => {
       });
     }
 
-    // 最後做排序
     switch (selectedSort) {
       case "price-asc":
         filtered = [...filtered].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -121,6 +94,22 @@ const SubCategoryPage: React.FC = () => {
     selectedMinPrice,
     selectedMaxPrice,
   ]);
+
+  if (!categoryId || !subCategoryId) {
+    return <div className="text-center text-gray-600">找不到此分類</div>;
+  }
+  if (!mainCat) {
+    return <div className="text-center text-gray-600">沒有此主分類</div>;
+  }
+  if (!subCategory) {
+    return <div className="text-center text-gray-600">沒有此子分類</div>;
+  }
+  if (!subCategoryMap) {
+    return <div className="text-center text-gray-600">沒有此主分類</div>;
+  }
+  if (!productsRaw.length) {
+    return <div className="text-center text-gray-600">沒有找到相關商品</div>;
+  }
 
   return (
     <main>

@@ -7,7 +7,7 @@ import { allProducts, categories } from "@/data/mockData";
 import { filterProducts } from "@/lib/utils/filterProducts";
 import { useFilterContext } from "@/context/FilterContext";
 
-// 日後放到types資料夾內
+// 日後放到 types 資料夾內
 interface Product {
   id: string;
   image: string;
@@ -33,35 +33,30 @@ const CategoryPage: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
-  if (!categoryId || !allProducts[categoryId]) {
-    return <div className="text-center text-gray-600">此分類不存在</div>;
-  }
-
-  // 找到主分類
+  const categoryExists = categoryId && allProducts[categoryId];
   const mainCat = categories.find((c) => c.categoryId === categoryId);
   const categoryTitle = mainCat?.labelZh ?? "";
   const categoryImage = mainCat?.image ?? "";
 
-  // 拿到該主分類下所有商品
-  const subcategories = Object.values(allProducts[categoryId]);
-  const mergedRaw = subcategories.flat();
+  const mergedProducts: Product[] = useMemo(() => {
+    if (!categoryExists) return [];
+    
+    return Object.values(allProducts[categoryId] || {}).flat().map((pd) => ({
+      id: pd.id,
+      image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
+      title: pd.title,
+      price: pd.price.toString(),
+      isNew: pd.isNew,
+      isSoldOut: pd.isSoldOut,
+      isHotSale: pd.isHotSale,
+      shippingMethods: pd.shippingMethods ?? [],
+      paymentMethods: pd.paymentMethods ?? [],
+    }));
+  }, [categoryExists, categoryId]);
 
-  const mergedProducts: Product[] = mergedRaw.map((pd) => ({
-    id: pd.id,
-    image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
-    title: pd.title,
-    price: pd.price.toString(),
-    isNew: pd.isNew,
-    isSoldOut: pd.isSoldOut,
-    isHotSale: pd.isHotSale,
-    shippingMethods: pd.shippingMethods ?? [],
-    paymentMethods: pd.paymentMethods ?? [],
-  }));
-
-  // 商品(父)類別加載時 獲取商品價格最大值與最小值
   useEffect(() => {
     if (mergedProducts.length > 0) {
-      const prices = mergedProducts.map(p => parseInt(p.price, 10));
+      const prices = mergedProducts.map((p) => parseInt(p.price, 10));
       const min = Math.min(...prices);
       const max = Math.max(...prices);
       setGlobalMinPrice(min);
@@ -72,16 +67,11 @@ const CategoryPage: React.FC = () => {
     }
   }, [mergedProducts, setGlobalMinPrice, setGlobalMaxPrice]);
 
-  // 用useMemo做篩選 + 價格區間 + 排序
   const finalProducts = useMemo(() => {
-    // 用filterProducts處理付款 / 運送方式
-    let filtered = filterProducts(
-      mergedProducts,
-      selectedPaymentMethods,
-      selectedShippingMethods
-    );
+    if (!categoryExists) return [];
 
-    // 價格區間
+    let filtered = filterProducts(mergedProducts, selectedPaymentMethods, selectedShippingMethods);
+
     if (selectedMinPrice || selectedMaxPrice) {
       const min = selectedMinPrice ? parseInt(selectedMinPrice, 10) : 0;
       const max = selectedMaxPrice ? parseInt(selectedMaxPrice, 10) : Infinity;
@@ -91,7 +81,6 @@ const CategoryPage: React.FC = () => {
       });
     }
 
-    // 最後做排序
     switch (selectedSort) {
       case "price-asc":
         filtered = [...filtered].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -105,6 +94,7 @@ const CategoryPage: React.FC = () => {
 
     return filtered;
   }, [
+    categoryExists,
     mergedProducts,
     selectedPaymentMethods,
     selectedShippingMethods,
@@ -113,14 +103,13 @@ const CategoryPage: React.FC = () => {
     selectedMaxPrice,
   ]);
 
+  if (!categoryExists) {
+    return <div className="text-center text-gray-600">此分類不存在</div>;
+  }
 
   return (
     <main>
-      <ProductList
-        products={finalProducts}
-        categoryImage={categoryImage}
-        categoryTitle={categoryTitle}
-      />
+      <ProductList products={finalProducts} categoryImage={categoryImage} categoryTitle={categoryTitle} />
     </main>
   );
 };

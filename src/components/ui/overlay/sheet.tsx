@@ -90,7 +90,7 @@ const SheetDescription = React.forwardRef<
   React.ComponentRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <SheetPrimitive.Description ref={ref} {...props} />
+  <SheetPrimitive.Description ref={ref} className={cn(className)} {...props} />
 ));
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
 

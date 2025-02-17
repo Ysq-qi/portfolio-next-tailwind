@@ -38,19 +38,11 @@ export const AccordionTrigger = React.forwardRef<
 ));
 AccordionTrigger.displayName = "AccordionTrigger";
 
-/**
- * -----------------------------------------------------
- * 1. 視覺維持箭頭的 (h-4 w-4) 
- * 2. 點擊範圍卻要加大
- * 3. Accordion 展開時，箭頭會旋轉
- * -----------------------------------------------------
- */
 export const CategoryAccordionTrigger = React.forwardRef<
   React.ComponentRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({
   className,
-  children,
   ...props
 }, ref) => (
   <AccordionPrimitive.Trigger
@@ -62,19 +54,7 @@ export const CategoryAccordionTrigger = React.forwardRef<
     )}
     {...props}
   >
-    {/*
-      1. 這個 <span> 不會有任何可見的背景或邊框，但擴大了點擊範圍。
-      2. inset-0 表示覆蓋整個父容器，再用 -m-2 等負邊距讓點擊區域往外多延伸 2px。
-         (可自行調整 -m-2 -> -m-3 或 -m-4, 來加大點擊區域)
-      3. 不影響畫面上的大小，也不會改變 layout。
-    */}
     <span className="absolute inset-0 -m-2" />
-
-    {/*
-      1. 這裡才是真正顯示的箭頭大小：h-4 w-4
-      2. 用 group-data-[state=open]:rotate-180 來旋轉
-      3. transition-transform 讓旋轉有平滑動畫
-    */}
     <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
   </AccordionPrimitive.Trigger>
 ));

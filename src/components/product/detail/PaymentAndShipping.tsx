@@ -8,7 +8,6 @@ import {
   AccordionContent,
 } from "@/components/ui/overlay/accordion";
 
-// **付款與運送方式的 Props**
 interface PaymentAndShippingProps {
   paymentMethods?: string[];
   shippingMethods?: string[];
@@ -22,9 +21,7 @@ export default function PaymentAndShipping({
   const hasShippingMethods = shippingMethods.length > 0;
 
   return (
-    // 將原本 defaultValue={["payment"]} 移除或設為空陣列 => 預設關閉
     <Accordion type="multiple" className="space-y-2" defaultValue={[]}>
-      {/* 付款與配送方式（合併在同一個 AccordionItem） */}
       <AccordionItem value="payment">
         <AccordionTrigger>
           付款方式📌📌🚚

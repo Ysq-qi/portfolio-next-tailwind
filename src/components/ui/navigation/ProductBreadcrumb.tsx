@@ -47,7 +47,7 @@ function findProductById(productId: string) {
 // **生成麵包屑**
 function generateBreadcrumbs(pathname: string) {
   const segments = pathname.split("/").filter(Boolean);
-  let result = [];
+  const result = [];
 
   // **商品詳情頁面 `/productdetail/:productId`**
   if (segments.length === 2 && segments[0] === "productdetail") {

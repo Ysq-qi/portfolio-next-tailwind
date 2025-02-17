@@ -5,10 +5,10 @@ import { ContentSlider } from "@/components/ui/navigation/content-slider";
 import ProductCard from "@/components/product/common/ProductCard";
 
 interface RelatedProductsProps {
-  relatedProducts: { id: string; image: string; title: string; price: string }[];
+  relatedProducts: { id: string; image: string; title: string; price: number }[];
 }
 
-const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts }) => {
+const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts = [] }) => {
   return (
     <div className="min-h-[200px] flex flex-col space-y-8">
       <h2 className="text-lg font-semibold">商品推薦</h2>
