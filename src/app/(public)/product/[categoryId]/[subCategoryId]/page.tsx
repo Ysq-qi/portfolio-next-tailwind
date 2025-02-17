@@ -6,21 +6,13 @@ import ProductList from "@/components/product/list/ProductList";
 import { allProducts, categories } from "@/data/mockData";
 import { filterProducts } from "@/lib/utils/filterProducts";
 import { useFilterContext } from "@/context/FilterContext";
-
-interface Product {
-  id: string;
-  image: string;
-  title: string;
-  price: string;
-  isNew?: boolean;
-  isSoldOut?: boolean;
-  isHotSale?: boolean;
-  shippingMethods?: string[];
-  paymentMethods?: string[];
-}
+import { Product } from "@/types";
 
 const SubCategoryPage: React.FC = () => {
-  const { categoryId, subCategoryId } = useParams() as { categoryId: string; subCategoryId: string };
+  const { categoryId, subCategoryId } = useParams() as {
+    categoryId: string;
+    subCategoryId: string;
+  };
 
   const {
     selectedMinPrice,
@@ -32,30 +24,32 @@ const SubCategoryPage: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
-  const mainCat = categories.find((c) => c.categoryId === categoryId);
-  const subCategory = mainCat?.subCategories.find((sub) => sub.labelEn === subCategoryId);
-  const subCategoryMap = allProducts[categoryId];
-  const productsRaw = subCategoryMap?.[subCategoryId] || [];
+  const mainCategory = categories.find((c) => c.categoryId === categoryId);
+  const subCategory = mainCategory?.subCategories.find(
+    (sub) => sub.labelEn === subCategoryId
+  );
 
-  const mergedProducts: Product[] = productsRaw.map((pd) => ({
-    id: pd.id,
-    image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
-    title: pd.title,
-    price: pd.price.toString(),
-    isNew: pd.isNew,
-    isSoldOut: pd.isSoldOut,
-    isHotSale: pd.isHotSale,
-    shippingMethods: pd.shippingMethods ?? [],
-    paymentMethods: pd.paymentMethods ?? [],
-  }));
+  const mergedProducts: Product[] = useMemo(() => {
+    const productsRaw = allProducts?.[categoryId]?.[subCategoryId] || [];
+
+    return productsRaw.map((pd) => ({
+      id: pd.id,
+      image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
+      title: pd.title,
+      price: pd.price,
+      isNew: pd.isNew,
+      isSoldOut: pd.isSoldOut,
+      isHotSale: pd.isHotSale,
+      shippingMethods: pd.shippingMethods ?? [],
+      paymentMethods: pd.paymentMethods ?? [],
+    }));
+  }, [categoryId, subCategoryId]);
 
   useEffect(() => {
     if (mergedProducts.length > 0) {
-      const prices = mergedProducts.map((p) => parseInt(p.price, 10));
-      const min = Math.min(...prices);
-      const max = Math.max(...prices);
-      setGlobalMinPrice(min);
-      setGlobalMaxPrice(max);
+      const prices = mergedProducts.map((p) => Number(p.price));
+      setGlobalMinPrice(Math.min(...prices));
+      setGlobalMaxPrice(Math.max(...prices));
     } else {
       setGlobalMinPrice(null);
       setGlobalMaxPrice(null);
@@ -63,26 +57,30 @@ const SubCategoryPage: React.FC = () => {
   }, [mergedProducts, setGlobalMinPrice, setGlobalMaxPrice]);
 
   const finalProducts = useMemo(() => {
-    let filtered = filterProducts(mergedProducts, selectedPaymentMethods, selectedShippingMethods);
+    let filtered = filterProducts(
+      mergedProducts,
+      selectedPaymentMethods,
+      selectedShippingMethods
+    );
 
-    if (selectedMinPrice || selectedMaxPrice) {
-      const min = selectedMinPrice ? parseInt(selectedMinPrice, 10) : 0;
-      const max = selectedMaxPrice ? parseInt(selectedMaxPrice, 10) : Infinity;
+    if (selectedMinPrice !== null || selectedMaxPrice !== null) {
+      const min = selectedMinPrice ? Number(selectedMinPrice) : 0;
+      const max = selectedMaxPrice ? Number(selectedMaxPrice) : Infinity;
+      
       filtered = filtered.filter((p) => {
-        const priceVal = parseInt(p.price, 10) || 0;
-        return priceVal >= min && priceVal <= max;
+        const numericPrice = Number(p.price);
+        return numericPrice >= min && numericPrice <= max;
       });
     }
 
-    switch (selectedSort) {
-      case "price-asc":
-        filtered = [...filtered].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-        break;
-      case "price-desc":
-        filtered = [...filtered].sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-        break;
-      default:
-        break;
+    if (selectedSort === "price-asc") {
+      filtered = filtered.sort(
+        (a, b) => Number(a.price) - Number(b.price)
+      );
+    } else if (selectedSort === "price-desc") {
+      filtered = filtered.sort(
+        (a, b) => Number(b.price) - Number(a.price)
+      );
     }
 
     return filtered;
@@ -95,28 +93,12 @@ const SubCategoryPage: React.FC = () => {
     selectedMaxPrice,
   ]);
 
-  if (!categoryId || !subCategoryId) {
-    return <div className="text-center text-gray-600">找不到此分類</div>;
-  }
-  if (!mainCat) {
-    return <div className="text-center text-gray-600">沒有此主分類</div>;
-  }
-  if (!subCategory) {
-    return <div className="text-center text-gray-600">沒有此子分類</div>;
-  }
-  if (!subCategoryMap) {
-    return <div className="text-center text-gray-600">沒有此主分類</div>;
-  }
-  if (!productsRaw.length) {
-    return <div className="text-center text-gray-600">沒有找到相關商品</div>;
-  }
-
   return (
     <main>
       <ProductList
         products={finalProducts}
-        categoryImage={subCategory.image}
-        categoryTitle={subCategory.labelZh}
+        categoryImage={subCategory?.image}
+        categoryTitle={subCategory?.labelZh}
       />
     </main>
   );

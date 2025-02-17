@@ -1,5 +1,5 @@
 import { allProducts } from "@/data/mockData";
-import { ProductDetail } from "@/data/mockData";
+import { ProductDetail } from "@/types";
 
 const productList: ProductDetail[] = Object.values(allProducts)
   .flatMap((subMap) => Object.values(subMap))

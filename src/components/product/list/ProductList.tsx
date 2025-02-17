@@ -7,16 +7,16 @@ import ProductCardSkeleton from "@/components/ui/feedback/product-card-skeleton"
 import SortDropdown from "@/components/product/list/SortDropdown";
 import NoFilteredProducts from "@/components/product/list/NoFilteredProducts";
 import Loading from "@/components/ui/feedback/loading";
-import { ProductListItem } from "@/types";
+import { Product } from "@/types";
 
-interface ProductListProps {
-  products: ProductListItem[];
+export interface ProductListProps {
+  products: Product[];
   categoryImage?: string;
   categoryTitle?: string;
 }
 
 const ProductList: React.FC<ProductListProps> = ({
-  products = [],
+  products,
   categoryImage = "",
   categoryTitle = "",
 }) => {
@@ -41,7 +41,9 @@ const ProductList: React.FC<ProductListProps> = ({
   return (
     <section className="w-[890px] ml-auto my-6 mx-2">
       <div className="mb-6">
-        {categoryImage && <CategoryBanner image={categoryImage} title={categoryTitle} />}
+        {categoryImage && (
+          <CategoryBanner image={categoryImage} title={categoryTitle} />
+        )}
       </div>
 
       {hasNoProducts ? (

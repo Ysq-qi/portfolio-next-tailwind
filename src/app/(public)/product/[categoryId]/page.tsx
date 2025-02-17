@@ -6,19 +6,7 @@ import ProductList from "@/components/product/list/ProductList";
 import { allProducts, categories } from "@/data/mockData";
 import { filterProducts } from "@/lib/utils/filterProducts";
 import { useFilterContext } from "@/context/FilterContext";
-
-// 日後放到 types 資料夾內
-interface Product {
-  id: string;
-  image: string;
-  title: string;
-  price: string;
-  isNew?: boolean;
-  isSoldOut?: boolean;
-  isHotSale?: boolean;
-  shippingMethods?: string[];
-  paymentMethods?: string[];
-}
+import { Product } from "@/types";
 
 const CategoryPage: React.FC = () => {
   const { categoryId } = useParams() as { categoryId: string };
@@ -33,34 +21,34 @@ const CategoryPage: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
-  const categoryExists = categoryId && allProducts[categoryId];
-  const mainCat = categories.find((c) => c.categoryId === categoryId);
-  const categoryTitle = mainCat?.labelZh ?? "";
-  const categoryImage = mainCat?.image ?? "";
+  const categoryExists = categoryId in allProducts;
+  const mainCategory = categories.find((c) => c.categoryId === categoryId);
+  const categoryTitle = mainCategory?.labelZh ?? "";
+  const categoryImage = mainCategory?.image ?? "";
 
   const mergedProducts: Product[] = useMemo(() => {
     if (!categoryExists) return [];
-    
-    return Object.values(allProducts[categoryId] || {}).flat().map((pd) => ({
-      id: pd.id,
-      image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
-      title: pd.title,
-      price: pd.price.toString(),
-      isNew: pd.isNew,
-      isSoldOut: pd.isSoldOut,
-      isHotSale: pd.isHotSale,
-      shippingMethods: pd.shippingMethods ?? [],
-      paymentMethods: pd.paymentMethods ?? [],
-    }));
+
+    return Object.values(allProducts[categoryId] || {})
+      .flat()
+      .map((pd) => ({
+        id: pd.id,
+        image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
+        title: pd.title,
+        price: pd.price,
+        isNew: pd.isNew,
+        isSoldOut: pd.isSoldOut,
+        isHotSale: pd.isHotSale,
+        shippingMethods: pd.shippingMethods ?? [],
+        paymentMethods: pd.paymentMethods ?? [],
+      }));
   }, [categoryExists, categoryId]);
 
   useEffect(() => {
     if (mergedProducts.length > 0) {
-      const prices = mergedProducts.map((p) => parseInt(p.price, 10));
-      const min = Math.min(...prices);
-      const max = Math.max(...prices);
-      setGlobalMinPrice(min);
-      setGlobalMaxPrice(max);
+      const prices = mergedProducts.map((p) => Number(p.price));
+      setGlobalMinPrice(Math.min(...prices));
+      setGlobalMaxPrice(Math.max(...prices));
     } else {
       setGlobalMinPrice(null);
       setGlobalMaxPrice(null);
@@ -70,26 +58,30 @@ const CategoryPage: React.FC = () => {
   const finalProducts = useMemo(() => {
     if (!categoryExists) return [];
 
-    let filtered = filterProducts(mergedProducts, selectedPaymentMethods, selectedShippingMethods);
+    let filtered = filterProducts(
+      mergedProducts,
+      selectedPaymentMethods,
+      selectedShippingMethods
+    );
 
-    if (selectedMinPrice || selectedMaxPrice) {
-      const min = selectedMinPrice ? parseInt(selectedMinPrice, 10) : 0;
-      const max = selectedMaxPrice ? parseInt(selectedMaxPrice, 10) : Infinity;
+    if (selectedMinPrice !== null || selectedMaxPrice !== null) {
+      const min = selectedMinPrice ? Number(selectedMinPrice) : 0;
+      const max = selectedMaxPrice ? Number(selectedMaxPrice) : Infinity;
+      
       filtered = filtered.filter((p) => {
-        const priceVal = parseInt(p.price, 10) || 0;
-        return priceVal >= min && priceVal <= max;
+        const numericPrice = Number(p.price);
+        return numericPrice >= min && numericPrice <= max;
       });
     }
 
-    switch (selectedSort) {
-      case "price-asc":
-        filtered = [...filtered].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-        break;
-      case "price-desc":
-        filtered = [...filtered].sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-        break;
-      default:
-        break;
+    if (selectedSort === "price-asc") {
+      filtered = filtered.sort(
+        (a, b) => Number(a.price) - Number(b.price)
+      );
+    } else if (selectedSort === "price-desc") {
+      filtered = filtered.sort(
+        (a, b) => Number(b.price) - Number(a.price)
+      );
     }
 
     return filtered;
@@ -109,7 +101,11 @@ const CategoryPage: React.FC = () => {
 
   return (
     <main>
-      <ProductList products={finalProducts} categoryImage={categoryImage} categoryTitle={categoryTitle} />
+      <ProductList
+        products={finalProducts}
+        categoryImage={categoryImage}
+        categoryTitle={categoryTitle}
+      />
     </main>
   );
 };

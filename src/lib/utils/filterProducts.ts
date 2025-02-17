@@ -1,16 +1,4 @@
-
-// 日後放到types資料夾內
-interface Product {
-  id: string;
-  image: string;
-  title: string;
-  price: string;
-  isNew?: boolean;
-  isSoldOut?: boolean;
-  isHotSale?: boolean;
-  shippingMethods?: string[];
-  paymentMethods?: string[];
-}
+import { Product } from "@/types";
 
 export function filterProducts(
   products: Product[],

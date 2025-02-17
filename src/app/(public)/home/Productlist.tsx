@@ -8,7 +8,7 @@ interface Product {
   id: string;
   image: string;
   title: string;
-  price: string;
+  price: number;
   isNew?: boolean;
   isSoldOut?: boolean;
   isHotSale?: boolean;
@@ -23,7 +23,7 @@ const products = [
     id: "1",
     image: "/images/product1.jfif",
     title: "男撥水加工羽絨大衣深摩卡棕",
-    price: "4,390",
+    price: 4390,
     isNew: true,
     isSoldOut: true, 
     isHotSale: true  
@@ -32,52 +32,52 @@ const products = [
     id: "2",
     image: "/images/product2.jfif",
     title: "女裝休閒連帽外套",
-    price: "2,990",
+    price: 2990,
     isSoldOut: true,
   },
   {
     id: "3",
     image: "/images/product3.jfif",
     title: "兒童保暖羽絨背心",
-    price: "1,990",
+    price: 1990,
     isNew: true,
   },
   {
     id: "4",
     image: "/images/product4.jfif",
     title: "高機能運動跑鞋",
-    price: "3,490",
+    price: 3490,
     isHotSale: true,
   },
   {
     id: "5",
     image: "/images/product4.jfif",
     title: "高機能運動跑鞋",
-    price: "3,490",
+    price: 3490,
   },
   {
     id: "6",
     image: "/images/product4.jfif",
     title: "高機能運動跑鞋",
-    price: "3,490",
+    price: 3490,
   },
   {
     id: "7",
     image: "/images/product4.jfif",
     title: "高機能運動跑鞋",
-    price: "3,490",
+    price: 3490,
   },
   {
     id: "8",
     image: "/images/product4.jfif",
     title: "高機能運動跑鞋",
-    price: "3,490",
+    price: 3490,
   },
   {
     id: "9",
     image: "/images/product4.jfif",
     title: "高機能運動跑鞋",
-    price: "3,490",
+    price: 3490,
   },
 ];
 

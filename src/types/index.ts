@@ -1,5 +1,4 @@
 export interface ProductDetail {
-  // 必備屬性
   id: string;
   title: string;
   price: number;
@@ -16,8 +15,19 @@ export interface ProductDetail {
   isHotSale?: boolean;
   paymentMethods?: string[];
   shippingMethods?: string[];
-  relatedProducts: { id: string; image: string; title: string; price: number }[];
-  reviews?: { reviewId: string; userId: string; rating: number; comment: string; timestamp: string }[];
+  relatedProducts?: {
+    id: string;
+    image: string;
+    title: string;
+    price: number;
+  }[];
+  reviews?: {
+    reviewId: string;
+    userId: string;
+    rating: number;
+    comment: string;
+    timestamp: string;
+  }[];
   averageRating?: number;
   totalReviews?: number;
   analytics?: {
@@ -27,7 +37,14 @@ export interface ProductDetail {
   };
 }
 
-export type ProductListItem = Pick<
-  ProductDetail,
-  "id" | "title" | "price" | "image" | "isNew" | "isSoldOut" | "isHotSale"
->;
+export interface Product {
+  id: string;
+  title: string;
+  price: number;
+  image: string;
+  isNew?: boolean;
+  isSoldOut?: boolean;
+  isHotSale?: boolean;
+  shippingMethods?: string[];
+  paymentMethods?: string[];
+}
