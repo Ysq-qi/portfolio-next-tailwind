@@ -2,13 +2,12 @@ import { Metadata } from "next";
 import { categories } from "@/data/mockData";
 import SubCategoryClient from "@/app/(public)/product/[categoryId]/CategoryClient";
 
-type Props = {
-  params: { subCategoryId: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const { subCategoryId } = resolvedParams;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ subCategoryId: string }>;
+}): Promise<Metadata> {
+  const { subCategoryId } = await params;
 
   const mainCategory = categories.find((c) =>
     c.subCategories.some((sub) => sub.labelEn === subCategoryId)
