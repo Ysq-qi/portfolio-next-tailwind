@@ -9,7 +9,7 @@ import Image from "next/image";
 interface ProductCartCardProps {
   image: string;
   title: string;
-  price: string;
+  price: number;
   onRemove?: () => void;
 }
 
@@ -30,7 +30,7 @@ const ProductCardCart: React.FC<ProductCartCardProps> = ({
           {title}
         </h3>
         <p className="mt-2 text-sm font-bold text-[#7f0019]">
-          {price}
+          NT${price}
         </p>
       </CardContent>
       {onRemove && (

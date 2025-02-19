@@ -3,16 +3,32 @@ import { Card, CardContent } from "@/components/ui/data-display/card";
 import { Skeleton } from "@/components/ui/feedback/skeleton";
 
 interface ProductCardSkeletonProps {
-  variant?: "home" | "productList";
+  variant?: "home" | "productListMobile" | "productList";
 }
 
 const ProductCardSkeleton: React.FC<ProductCardSkeletonProps> = ({
   variant = "home",
 }) => {
-  // 根據 variant 設置不同樣式
-  const cardWidth = variant === "home" ? "w-[190px]" : "w-[215px]";
-  const cardHeight = variant === "home" ? "h-[190px]" : "h-[215px]";
-  const titleHeight = variant === "home" ? "h-[45px]" : "h-[50px]";
+  const variantStyles = {
+    home: {
+      cardWidth: "w-[190px]",
+      cardHeight: "h-[190px]",
+      titleHeight: "h-[45px]",
+    },
+    productListMobile: {
+      cardWidth: "w-[190px]",
+      cardHeight: "h-[190px]",
+      titleHeight: "h-[45px]",
+    },
+    productList: {
+      cardWidth: "w-[215px]",
+      cardHeight: "h-[215px]",
+      titleHeight: "h-[50px]",
+    },
+  };
+
+  const { cardWidth, cardHeight, titleHeight } =
+    variantStyles[variant] || variantStyles.productList;
 
   return (
     <Card

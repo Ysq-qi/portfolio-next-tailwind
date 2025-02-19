@@ -17,12 +17,10 @@ const Header: React.FC = () => {
         <div className="max-w-screen-xl mx-auto px-2 py-2 flex items-center justify-between">
           <MobileNav />
           <div className="w-[170px] h-[100px] flex items-center justify-start">
-            <Logo className="text-2xl" />
+            <Logo className="text-xl" />
           </div>
-          <div className="relative flex items-center">
-            <SearchIcon className="absolute left-1 h-6 w-6 text-gray-500" />
-          </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between gap-5 mr-2">
+            <SearchIcon className="relative flex items-center justify-center w-[20px] h-[20px] mr-1 rounded-full bg-gray-100 text-gray-700" />
             <UserActions className="relative flex items-center justify-center w-[28px] h-[28px] rounded-full bg-gray-100" />
             <Cart className="relative flex items-center justify-center w-[28px] h-[28px] rounded-full bg-gray-100" />
           </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import Providers from "@/app/providers";
+import { Metadata } from "next";
 import "@/styles/globals.css";
-// import { CategoryProvider } from "@/context/CategoryProvider";
+import Providers from "@/app/providers";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Next.js網站",
   description: "Next.js 實作專案",
   icons: {
@@ -15,9 +15,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="zh-TW">
       <body className="font-sans app-wrapper">
-          <Providers>  {/* 提供UI使用 */}
-            {children}
-          </Providers>
+        <Providers>  {/* 提供UI使用 */}
+          {children}
+        </Providers>
       </body>
     </html>
   );

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 // import TestPage1 from "@/app/(public)/test/TestPage1";
 import TestPage2 from "@/app/(public)/test/TestPage2";

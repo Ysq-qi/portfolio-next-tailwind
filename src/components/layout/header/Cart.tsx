@@ -18,16 +18,16 @@ interface CartItem {
   id: string;
   image: string;
   title: string;
-  price: string;
+  price: number;
 }
 
 const mockCartItems: CartItem[] = [
-  { id: "1", image: "/images/product1.jfif", title: "薄片 海鹽焦糖巧克力", price: "NT$89" },
-  { id: "2", image: "/images/product1.jfif", title: "無選別白可可葡萄乾", price: "NT$55" },
-  { id: "3", image: "/images/product1.jfif", title: "無選別白可可葡萄乾", price: "NT$55" },
-  { id: "4", image: "/images/product1.jfif", title: "無選別白可可葡萄乾", price: "NT$55" },
-  { id: "5", image: "/images/product1.jfif", title: "無選別白可可葡萄乾", price: "NT$55" },
-  { id: "6", image: "/images/product1.jfif", title: "無選別白可可葡萄乾", price: "NT$55" },
+  { id: "1", image: "/images/product1.jpg", title: "薄片 海鹽焦糖巧克力", price: 89 },
+  { id: "2", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 55 },
+  { id: "3", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 55 },
+  { id: "4", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 55 },
+  { id: "5", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 55 },
+  { id: "6", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 55 },
 ];
 
 const Cart: React.FC<{ className?: string }> = ({ className }) => {

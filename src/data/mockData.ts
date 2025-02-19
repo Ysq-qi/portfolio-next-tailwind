@@ -1062,7 +1062,7 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         price: 199,
         image: [
           "/images/productimages/product-food-snack-001.jpg",
-          "/images/productimages/product-food-snack-002.jpg",
+          "/images/productimages/product-food-snack-002.png",
         ],
         description: "文旦柚與白柚皮以特製糖液浸漬後，低溫乾燥將美味濃縮，品嚐細緻果皮纖維與酸香氣息。",
         descriptionImage:[

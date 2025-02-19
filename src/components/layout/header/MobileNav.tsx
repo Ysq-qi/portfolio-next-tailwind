@@ -22,7 +22,7 @@ const MobileNav: React.FC = () => {
           aria-label="打開導航菜單"
           className="p-2 rounded-md hover:bg-gray-100 focus:outline-none font-black sm:hidden"
         >
-          <Menu className="h-8 w-8" />
+          <Menu className="h-7 w-7" />
         </button>
       </SheetTrigger>
 

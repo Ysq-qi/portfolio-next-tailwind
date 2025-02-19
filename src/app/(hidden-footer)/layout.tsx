@@ -10,7 +10,7 @@ export const metadata = {
   },
 };
 
-export default function CartLayout({ children }: { children: React.ReactNode }) {
+export default function HiddenFooterLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />

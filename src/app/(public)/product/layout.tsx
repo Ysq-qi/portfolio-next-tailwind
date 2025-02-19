@@ -1,10 +1,13 @@
-"use client";
-
 import React from "react";
+import type { Metadata } from "next";
 import ProductBreadcrumb from "@/components/ui/navigation/ProductBreadcrumb";
 import CategorySidebar from "@/components/product/sidebar/CategorySidebar";
 import { FilterProvider } from "@/context/FilterContext";
 
+export const metadata: Metadata = {
+  title: "Next.js網站 | 商品列表",
+  description: "這裡是商品列表",
+};
 interface ProductLayoutProps {
   children: React.ReactNode;
 }

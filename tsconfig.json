@@ -35,6 +35,6 @@
       "@/hidden-footer/*": ["./src/app/(hidden-footer)/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "src/components/layout/header/UserActions"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "src/components/layout/header/UserActions", "src/lib/utils/rename.js"],
   "exclude": ["node_modules"]
 }

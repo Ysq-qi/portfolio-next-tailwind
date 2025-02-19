@@ -8,11 +8,11 @@ import { Carousel, CarouselItem } from "@/components/ui/data-display/carousel";
 // 橫幅區塊
 const Banner: React.FC = () => {
   const bannerImages = [
-    { src: "/images/carousel001.jpg", link: "/activity/sale1" },
-    { src: "/images/carousel002.jpg", link: "/activity/sale2" },
-    { src: "/images/carousel003.jpg", link: "/activity/sale3" },
-    { src: "/images/carousel004.jpg", link: "/activity/sale4" },
-    { src: "/images/carousel005.jpg", link: "/activity/sale5" },
+    { src: "/images/carousel/carousel001.jpg", link: "/activity/sale1" },
+    { src: "/images/carousel/carousel002.jpg", link: "/activity/sale2" },
+    { src: "/images/carousel/carousel003.jpg", link: "/activity/sale3" },
+    { src: "/images/carousel/carousel004.jpg", link: "/activity/sale4" },
+    { src: "/images/carousel/carousel005.jpg", link: "/activity/sale5" },
   ];
 
   return (

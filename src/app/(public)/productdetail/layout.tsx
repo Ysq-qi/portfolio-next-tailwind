@@ -13,6 +13,7 @@ const ProductDetailLayout: React.FC<ProductLayoutProps> = ({ children }) => {
         <ProductBreadcrumb />
       </div>
       <div className="flex w-full mt-2">
+        {/* 預設隱藏(hidden) 當尺寸>640px(sm)時才顯示*/}
         <aside className="hidden sm:block w-[200px] mr-4">
           <DetailSidebar />
         </aside>

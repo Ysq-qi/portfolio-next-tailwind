@@ -1,12 +1,11 @@
-"use client";
+import { Metadata } from "next";
+import HomeClient from "@/app/(public)/home";
 
-import React from "react";
-import HomePage from "@/app/(public)/home/page";
+export const metadata: Metadata = {
+  title: "Next.js網站 | 首頁",
+  description: "實作網站的首頁部分",
+};
 
-export default function Home() {
-  return (
-    <div className=" min-h-screen">
-      <HomePage />
-    </div>
-  );
+export default function Page() {
+  return <HomeClient />;
 }

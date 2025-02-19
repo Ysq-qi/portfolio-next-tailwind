@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
 import { Card, CardContent, CardFooter } from "@/components/ui/data-display/card";
 import { Heart, ShoppingCart } from "lucide-react";
@@ -18,66 +17,40 @@ interface ProductCardProps {
   isNew?: boolean;
   isSoldOut?: boolean;
   isHotSale?: boolean;
-  variant?: "home" | "productList" | "recommend";
+  variant?: "home" | "productListMobile" | "productList" | "recommend";
 }
 
 // 卡片變體樣式
-const cardVariants = {
-  width: cva("", {
-    variants: {
-      variant: {
-        home: "w-[190px]",
-        productList: "w-[215px]",
-        recommend: "w-[125px]",
-      },
-    },
-    defaultVariants: { variant: "productList" },
-  }),
-
-  height: cva("", {
-    variants: {
-      variant: {
-        home: "h-[190px]",
-        productList: "h-[215px]",
-        recommend: "h-[125px]",
-      },
-    },
-    defaultVariants: { variant: "productList" },
-  }),
-
-  priceColor: cva("text-[#7f0019]", {
-    variants: {
-      variant: {
-        home: "text-[#7f0019]",
-        productList: "text-[#7f0019]",
-        recommend: "text-[#7f0019]",
-      },
-    },
-    defaultVariants: { variant: "productList" },
-  }),
-
-  titleHeight: cva("", {
-    variants: {
-      variant: {
-        home: "h-[45px]",
-        productList: "h-[50px]",
-        recommend: "h-[70px]",
-      },
-    },
-    defaultVariants: { variant: "productList" },
-  }),
-
-  iconSize: cva("", {
-    variants: {
-      variant: {
-        home: "w-[23px] h-[23px]",
-        productList: "w-[23px] h-[23px]",
-        recommend: "hidden",
-      },
-    },
-    defaultVariants: { variant: "productList" },
-  }),
-};
+const variantStyles = {
+  home: {
+    cardWidth: "w-[190px]",
+    cardHeight: "h-[190px]",
+    titleHeight: "h-[45px]",
+    iconSize: "w-[23px] h-[23px]",
+    priceColor: "text-[#7f0019]",
+  },
+  productListMobile: {
+    cardWidth: "w-[190px]",
+    cardHeight: "h-[190px]",
+    titleHeight: "h-[45px]",
+    iconSize: "w-[23px] h-[23px]",
+    priceColor: "text-[#7f0019]",
+  },
+  productList: {
+    cardWidth: "w-[215px]",
+    cardHeight: "h-[215px]",
+    titleHeight: "h-[50px]",
+    iconSize: "w-[23px] h-[23px]",
+    priceColor: "text-[#7f0019]",
+  },
+  recommend: {
+    cardWidth: "w-[125px]",
+    cardHeight: "h-[125px]",
+    titleHeight: "h-[70px]",
+    iconSize: "hidden",
+    priceColor: "text-[#7f0019]",
+  },
+}
 
 // 新商品標籤
 const NewBadge: React.FC<{ isNew?: boolean }> = ({ isNew }) => {
@@ -156,30 +129,38 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isNew = false,
   isSoldOut = false,
   isHotSale = false,
-  variant = "home",
+  variant = "productList",
 }) => {
   const displayImage = Array.isArray(image) ? image[0] : image;
   const [dialogOpen, setDialogOpen] = useState(false);
 
+  // 取得當前變體的樣式
+  const { cardWidth, cardHeight, titleHeight, iconSize, priceColor } =
+    variantStyles[variant] || variantStyles.productList;
+
   const handleAddToCart = async () => {
-    // 顯示 Loading，並接收 toast 實例
     const loadingToast = ToastList.showAddLoading();
-  
-    // 模擬 API 請求
     setTimeout(() => {
       loadingToast?.dismiss();
       setDialogOpen(true);
     }, 500);
   };
-  
 
   return (
     <>
       <Link href={`/productdetail/${id}`} passHref>
-        <Card className={cn(cardVariants.width({ variant }), "shadow hover:shadow-lg transition-shadow rounded-lg overflow-hidden")}>
+        <Card className={cn(cardWidth, "shadow hover:shadow-lg transition-shadow rounded-lg overflow-hidden")}>
           {/* 點擊圖片可跳轉至詳情頁 */}
-          <div className={cn("relative", cardVariants.width({ variant }), cardVariants.height({ variant }))}>
-            <Image src={displayImage} alt={title} fill style={{ objectFit: "cover" }} className="rounded-t-md" />
+          <div className={cn("relative", cardWidth, cardHeight)}>
+            <Image
+              src={displayImage}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 25vw"
+              priority
+              style={{ objectFit: "cover" }}
+              className="rounded-t-md"
+            />
             <NewBadge isNew={isNew} />
             <SoldOutBadge isSoldOut={isSoldOut} />
             <HotSaleBadge isHotSale={isHotSale} />
@@ -187,10 +168,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
           {/* 商品內容 */}
           <CardContent className="p-2">
-            <h3 className={cn("text-base font-bold text-gray-800 pt-1", cardVariants.titleHeight({ variant }))}>
+            <h3 className={cn("text-base font-bold text-gray-800 pt-1", titleHeight)}>
               {title}
             </h3>
-            <p className={cn("pt-2 text-base font-bold", cardVariants.priceColor({ variant }))}>NT${price}</p>
+            <p className={cn("pt-2 text-base font-bold", priceColor)}>NT${price}</p>
           </CardContent>
 
           {/* 底部按鈕 */}
@@ -198,25 +179,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
             {variant !== "recommend" && (
               <>
                 <button 
-                  className={cn("flex items-center justify-center rounded-full bg-white", cardVariants.iconSize({ variant }))} aria-label="Add to Favorites"
+                  className={cn("flex items-center justify-center rounded-full bg-white", iconSize)} aria-label="Add to Favorites"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                   }}
                 >
-                  <Heart className={cn("text-gray-600", cardVariants.iconSize({ variant }))} />
+                  <Heart className={cn("text-gray-600", iconSize)} />
                 </button>
 
                 {/* 點擊購物車 */}
                 <button
-                  className={cn("flex items-center justify-center rounded-full bg-white", cardVariants.iconSize({ variant }))} 
+                  className={cn("flex items-center justify-center rounded-full bg-white", iconSize)} 
                   aria-label="Add to Cart"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     handleAddToCart();
-                  }}                >
-                  <ShoppingCart className={cn("text-gray-600", cardVariants.iconSize({ variant }))} />
+                  }}
+                >
+                  <ShoppingCart className={cn("text-gray-600", iconSize)} />
                 </button>
               </>
             )}

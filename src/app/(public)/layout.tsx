@@ -1,10 +1,11 @@
 import React from "react";
+import { Metadata } from "next";
+import "@/styles/globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import "@/styles/globals.css";
 import ScrollToTopButton from "@/components/ui/navigation/scroll-to-top-button";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Next.js 實作網站",
   description: "Next.js 實作網站",
   icons: {
