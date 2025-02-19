@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import { categories } from "@/data/mockData";
 import SubCategoryClient from "@/app/(public)/product/[categoryId]/CategoryClient";
 
-type Props = {
+export async function generateMetadata({
+  params,
+}: {
   params: { subCategoryId: string };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+}): Promise<Metadata> {
   if (!params || !params.subCategoryId) {
     return {
       title: "商品列表 | 此分類不存在",
