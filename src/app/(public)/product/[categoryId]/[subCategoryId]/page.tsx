@@ -7,8 +7,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const { subCategoryId } = resolvedParams;
+  const { subCategoryId } = params;
 
   const mainCategory = categories.find((c) =>
     c.subCategories.some((sub) => sub.labelEn === subCategoryId)
