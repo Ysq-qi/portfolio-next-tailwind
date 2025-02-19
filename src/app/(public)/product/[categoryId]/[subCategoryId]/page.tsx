@@ -7,6 +7,13 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  if (!params || !params.subCategoryId) {
+    return {
+      title: "商品列表 | 此分類不存在",
+      description: "查無此子分類",
+    };
+  }
+
   const { subCategoryId } = params;
 
   const mainCategory = categories.find((c) =>
