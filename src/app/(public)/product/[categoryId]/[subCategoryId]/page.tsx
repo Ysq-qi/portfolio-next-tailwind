@@ -5,6 +5,7 @@ import SubCategoryClient from "@/app/(public)/product/[categoryId]/CategoryClien
 export async function generateMetadata({
   params,
 }: {
+<<<<<<< HEAD
   params: { subCategoryId: string };
 }): Promise<Metadata> {
   if (!params || !params.subCategoryId) {
@@ -15,6 +16,11 @@ export async function generateMetadata({
   }
 
   const { subCategoryId } = params;
+=======
+  params: Promise<{ subCategoryId: string }>;
+}): Promise<Metadata> {
+  const { subCategoryId } = await params;
+>>>>>>> 40d732b (fix: 修正 Next.js 15.1.0 params 類型錯誤，確保 generateMetadata 正常運作)
 
   const mainCategory = categories.find((c) =>
     c.subCategories.some((sub) => sub.labelEn === subCategoryId)

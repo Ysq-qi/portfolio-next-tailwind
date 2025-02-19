@@ -2,13 +2,16 @@ import { Metadata } from "next";
 import { findProductById } from "@/lib/utils/findProductById";
 import ProductDetailClient from "./ProductDetailClient";
 
+type Params = {
+  productId: string;
+};
+
 type Props = {
-  params: Record<string, string | undefined>;
+  params: Promise<Params>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const productId = resolvedParams.productId;
+  const { productId } = await params;
 
   if (!productId) {
     return {
@@ -45,8 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
-  const resolvedParams = await params;
-  const productId = resolvedParams.productId;
+  const { productId } = await params;
 
   if (!productId) {
     return <div className="text-center py-10">商品 ID 無效</div>;

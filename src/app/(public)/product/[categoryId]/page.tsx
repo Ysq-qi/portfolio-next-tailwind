@@ -3,11 +3,11 @@ import { categories } from "@/data/mockData";
 import CategoryClient from "@/app/(public)/product/[categoryId]/CategoryClient";
 
 type Props = {
-  params: { categoryId: string };
+  params: Promise<{ categoryId: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { categoryId } = params;
+  const { categoryId } = await params;
 
   const category = categories.find((c) => c.categoryId === categoryId);
 
