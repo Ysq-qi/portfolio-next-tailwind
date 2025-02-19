@@ -7,14 +7,13 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const { categoryId } = resolvedParams; 
+  const { categoryId } = params;
 
   const category = categories.find((c) => c.categoryId === categoryId);
 
   if (!category) {
     return {
-      title: "商品列表 |分類不存在",
+      title: "商品列表 | 分類不存在",
       description: "查無此分類",
     };
   }
@@ -26,7 +25,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function CategoryPage() {
-  // SSR fetch
-  // const data = await fetch(`...`);
   return <CategoryClient />;
 }
