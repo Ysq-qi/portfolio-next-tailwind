@@ -1,46 +1,36 @@
 import { Metadata } from "next";
-import { categories } from "@/data/mockData";
-import SubCategoryClient from "@/app/(public)/product/[categoryId]/CategoryClient";
+import SubCategoryClient from "./SubCategoryClient";
 
-export async function generateMetadata({
-  params,
-}: {
-<<<<<<< HEAD
-  params: { subCategoryId: string };
-}): Promise<Metadata> {
-  if (!params || !params.subCategoryId) {
-    return {
-      title: "商品列表 | 此分類不存在",
-      description: "查無此子分類",
-    };
-  }
+/* 
+// 適用於非同步資料時，可使用動態 metadata (Next.js 15.1 存在BUG)
+ export async function generateMetadata({ params }: Props): Promise<Metadata> {
+//   const { categoryId, subCategoryId } = params; // 即便資料是同步的 也會強制要求使用await 但使用await 又會造成部屬錯誤
 
-  const { subCategoryId } = params;
-=======
-  params: Promise<{ subCategoryId: string }>;
-}): Promise<Metadata> {
-  const { subCategoryId } = await params;
->>>>>>> 40d732b (fix: 修正 Next.js 15.1.0 params 類型錯誤，確保 generateMetadata 正常運作)
+//   // 在 mockData 裡找到對應的 category 與 subCategory
+//   const mainCategory = categories.find((c) => c.categoryId === categoryId);
+//   const subCategory = mainCategory?.subCategories.find(
+//     (sub) => sub.labelEn === subCategoryId
+//   );
 
-  const mainCategory = categories.find((c) =>
-    c.subCategories.some((sub) => sub.labelEn === subCategoryId)
-  );
-  const subCategory = mainCategory?.subCategories.find(
-    (sub) => sub.labelEn === subCategoryId
-  );
+//   if (!subCategory) {
+//     return {
+//       title: "商品列表 | 此子分類不存在",
+//       description: "查無此子分類",
+//     };
+//   }
 
-  if (!subCategory) {
-    return {
-      title: "商品列表 | 此分類不存在",
-      description: "查無此子分類",
-    };
-  }
+//   return {
+//     title: `Next.js網站 | ${subCategory.labelZh}`,
+//     description: `這裡是 ${subCategory.labelZh} 的商品列表`,
+//   };
+// }
+*/
 
-  return {
-    title: `Next.js網站 | ${subCategory.labelZh}`,
-    description: `這裡是 ${subCategory.labelZh} 商品列表`,
-  };
-}
+// 權宜之計：使用靜態 metadata，避免動態 `params` 錯誤
+export const metadata: Metadata = {
+  title: "Next.js網站 | 商品列表",
+  description: "這裡是商品列表頁面",
+};
 
 export default function SubCategoryPage() {
   return <SubCategoryClient />;

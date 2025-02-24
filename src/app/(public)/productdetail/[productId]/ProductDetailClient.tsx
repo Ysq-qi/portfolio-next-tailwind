@@ -108,7 +108,7 @@ const DesktopProductDetail: React.FC<{ product: ProductDetail }> = ({ product })
 
 // 手機版佈局
 const MobileProductDetail: React.FC<{ product: ProductDetail }> = ({ product }) => (
-  <section className="w-[85%] my-6 mx-4 sm:hidden">
+  <section className="w-[90%] my-6 mx-auto sm:hidden">
     <div className="flex flex-col space-y-6">
       <ProductImage images={product.image} />
       <ProductInfo title={product.title} price={product.price} isSoldOut={product.isSoldOut} />

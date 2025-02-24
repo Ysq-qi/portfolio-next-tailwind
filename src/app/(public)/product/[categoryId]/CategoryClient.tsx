@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import ProductList from "@/components/product/list/ProductList";
 import { allProducts, categories } from "@/data/mockData";
@@ -10,6 +10,16 @@ import { Product } from "@/types";
 
 const CategoryClient: React.FC = () => {
   const { categoryId } = useParams() as { categoryId: string };
+
+  // 確保 useParams() 已經取得 categoryId
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (categoryId) {
+      setReady(true);
+    }
+  }, [categoryId]);
+
   const {
     selectedMinPrice,
     selectedMaxPrice,
@@ -20,13 +30,13 @@ const CategoryClient: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
-  const categoryExists = categoryId in allProducts;
   const mainCategory = categories.find((c) => c.categoryId === categoryId);
   const categoryTitle = mainCategory?.labelZh ?? "";
   const categoryImage = mainCategory?.image ?? "";
 
   const mergedProducts: Product[] = useMemo(() => {
-    if (!categoryExists) return [];
+    if (!categoryId || !(categoryId in allProducts)) return [];
+
     return Object.values(allProducts[categoryId] || {})
       .flat()
       .map((pd) => ({
@@ -40,7 +50,7 @@ const CategoryClient: React.FC = () => {
         shippingMethods: pd.shippingMethods ?? [],
         paymentMethods: pd.paymentMethods ?? [],
       }));
-  }, [categoryExists, categoryId]);
+  }, [categoryId]);
 
   useEffect(() => {
     if (mergedProducts.length > 0) {
@@ -54,8 +64,6 @@ const CategoryClient: React.FC = () => {
   }, [mergedProducts, setGlobalMinPrice, setGlobalMaxPrice]);
 
   const finalProducts = useMemo(() => {
-    if (!categoryExists) return [];
-
     let filtered = filterProducts(
       mergedProducts,
       selectedPaymentMethods,
@@ -80,7 +88,6 @@ const CategoryClient: React.FC = () => {
 
     return filtered;
   }, [
-    categoryExists,
     mergedProducts,
     selectedPaymentMethods,
     selectedShippingMethods,
@@ -89,7 +96,11 @@ const CategoryClient: React.FC = () => {
     selectedMaxPrice,
   ]);
 
-  if (!categoryExists) {
+  if (!ready) {
+    return <p className="text-center text-gray-600">載入中...</p>;
+  }
+
+  if (!mainCategory) {
     return <div className="text-center text-gray-600">此分類不存在</div>;
   }
 

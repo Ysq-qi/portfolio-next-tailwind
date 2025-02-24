@@ -67,8 +67,8 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4">
-        <X className="h-4 w-4" />
+      <SheetPrimitive.Close className="absolute right-5 top-5">
+        <X className="h-6 w-6 " />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
@@ -81,7 +81,7 @@ const SheetTitle = React.forwardRef<
   React.ComponentRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <SheetPrimitive.Title ref={ref} className={cn('text-lg', className)} {...props} />
+  <SheetPrimitive.Title ref={ref} className={cn('text-lg ', className)} {...props} />
 ));
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
 

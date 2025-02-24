@@ -9,6 +9,7 @@ import { useFilterContext } from "@/context/FilterContext";
 import { Product } from "@/types";
 
 const SubCategoryClient: React.FC = () => {
+  // 只能在客戶端使用 useParams()
   const { categoryId, subCategoryId } = useParams() as {
     categoryId: string;
     subCategoryId: string;
@@ -24,13 +25,18 @@ const SubCategoryClient: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
+  // 撈出對應的子分類
   const mainCategory = categories.find((c) => c.categoryId === categoryId);
   const subCategory = mainCategory?.subCategories.find(
     (sub) => sub.labelEn === subCategoryId
   );
 
+  // 模擬撈取商品資料
   const mergedProducts: Product[] = useMemo(() => {
-    const productsRaw = allProducts?.[categoryId]?.[subCategoryId] || [];
+    if (!allProducts[categoryId] || !allProducts[categoryId][subCategoryId]) {
+      return [];
+    }
+    const productsRaw = allProducts[categoryId][subCategoryId] || [];
 
     return productsRaw.map((pd) => ({
       id: pd.id,
@@ -45,6 +51,7 @@ const SubCategoryClient: React.FC = () => {
     }));
   }, [categoryId, subCategoryId]);
 
+  // 根據商品價格動態設定 FilterContext 內的全域最小/最大價
   useEffect(() => {
     if (mergedProducts.length > 0) {
       const prices = mergedProducts.map((p) => Number(p.price));
@@ -56,6 +63,7 @@ const SubCategoryClient: React.FC = () => {
     }
   }, [mergedProducts, setGlobalMinPrice, setGlobalMaxPrice]);
 
+  // 最終篩選後的商品
   const finalProducts = useMemo(() => {
     let filtered = filterProducts(
       mergedProducts,
@@ -63,6 +71,7 @@ const SubCategoryClient: React.FC = () => {
       selectedShippingMethods
     );
 
+    // 價格篩選
     if (selectedMinPrice !== null || selectedMaxPrice !== null) {
       const min = selectedMinPrice ? Number(selectedMinPrice) : 0;
       const max = selectedMaxPrice ? Number(selectedMaxPrice) : Infinity;
@@ -73,14 +82,11 @@ const SubCategoryClient: React.FC = () => {
       });
     }
 
+    // 排序
     if (selectedSort === "price-asc") {
-      filtered = filtered.sort(
-        (a, b) => Number(a.price) - Number(b.price)
-      );
+      filtered = filtered.sort((a, b) => Number(a.price) - Number(b.price));
     } else if (selectedSort === "price-desc") {
-      filtered = filtered.sort(
-        (a, b) => Number(b.price) - Number(a.price)
-      );
+      filtered = filtered.sort((a, b) => Number(b.price) - Number(a.price));
     }
 
     return filtered;
@@ -93,6 +99,12 @@ const SubCategoryClient: React.FC = () => {
     selectedMaxPrice,
   ]);
 
+  // 如果壓根沒有此子分類 → 給個提示
+  if (!subCategory) {
+    return <div className="text-center text-gray-600">此子分類不存在</div>;
+  }
+
+  // 正常渲染
   return (
     <main>
       <ProductList

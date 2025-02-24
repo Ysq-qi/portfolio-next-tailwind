@@ -23,7 +23,7 @@ const ProductDetailAccordions: React.FC<ProductDetailAccordionsProps> = ({
   categories = [],
 }) => {
   return (
-    <div className="w-[445px] flex flex-col space-y-6 px-6">
+    <div className="w-full pr-2 lg:w-[445px] flex flex-col lg:space-y-6 lg:px-6">
       <PaymentAndShipping
         paymentMethods={paymentMethods}
         shippingMethods={shippingMethods}
