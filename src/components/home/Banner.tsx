@@ -18,7 +18,7 @@ const Banner: React.FC = () => {
   return (
     <>
       {/* 手機版 */}
-      <section className="sm:hidden w-full h-[200px]">
+      <section className="sm:hidden w-full h-[230px]">
         <Carousel
           arrowDesign="roundWhite"
           showDots

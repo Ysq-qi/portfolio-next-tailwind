@@ -19,6 +19,7 @@ const HoverCardContent = React.forwardRef<
     ref={ref}
     align={align}
     collisionBoundary={undefined}
+    avoidCollisions={false}
     sideOffset={sideOffset}
     className={cn(
       "absolute top-full right-[-18] z-50 min-w-[160px] min-h-[160px] rounded-md border bg-white shadow-md outline-none",

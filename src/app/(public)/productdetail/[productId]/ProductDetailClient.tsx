@@ -27,7 +27,6 @@ const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ productId }) 
         if (!found) {
           setError("找不到對應商品");
         } else {
-          // 若 image 是單張字串，就包裝成陣列
           const images = Array.isArray(found.image)
             ? found.image
             : found.image

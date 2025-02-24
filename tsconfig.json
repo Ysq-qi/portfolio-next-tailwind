@@ -36,5 +36,8 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "src/components/layout/header/UserActions", "src/lib/utils/rename.js"],
-  "exclude": ["node_modules"]
-}
+  "exclude": [
+    "node_modules",
+    ".next/types/app/(public)/product/[categoryId]/**",
+    ".next/types/app/(public)/product/[categoryId]/[subCategoryId]/**"
+  ]}
