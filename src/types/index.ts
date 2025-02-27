@@ -3,11 +3,12 @@ export interface ProductDetail {
   title: string;
   price: number;
   image: string[];
-  stock: number;
+  stock?: number;
   productDetails: { label: string; value: string }[];
   categories: { parent: string; children: string[] }[];
+  isConfigurable: boolean;
+  variants: ProductVariant[];
 
-  // 可選屬性
   description?: string;
   descriptionImage?: { image: string }[];
   isNew?: boolean;
@@ -37,11 +38,19 @@ export interface ProductDetail {
   };
 }
 
+export interface ProductVariant {
+  color: string;
+  image: string[];
+  sizes: { size: string; stock: number }[];
+}
+
 export interface Product {
   id: string;
   title: string;
   price: number;
   image: string;
+  isConfigurable: boolean;
+  variants: ProductVariant[];
   isNew?: boolean;
   isSoldOut?: boolean;
   isHotSale?: boolean;

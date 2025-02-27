@@ -90,7 +90,6 @@ const DesktopProductImage: React.FC<{
         width={400}
         height={400}
         className="border"
-        priority
       />
 
       <div className="absolute left-2 top-1/2 -translate-y-1/2">
@@ -154,7 +153,6 @@ const MobileProductImage: React.FC<{
         width={380}
         height={380}
         className="border"
-        priority
       />
 
       <div className="absolute left-2 top-1/2 -translate-y-1/2">

@@ -104,6 +104,8 @@ const DesktopProductList: React.FC<
                 isNew={product.isNew}
                 isSoldOut={product.isSoldOut}
                 isHotSale={product.isHotSale}
+                isConfigurable={product.isConfigurable}
+                variants={product.variants}
                 variant="productList"
               />
             )
@@ -158,6 +160,8 @@ const MobileProductList: React.FC<
                 isNew={product.isNew}
                 isSoldOut={product.isSoldOut}
                 isHotSale={product.isHotSale}
+                isConfigurable={product.isConfigurable}
+                variants={product.variants}
                 variant="productListMobile"
               />
             )

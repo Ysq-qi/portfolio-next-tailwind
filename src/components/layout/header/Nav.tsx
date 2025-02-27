@@ -25,15 +25,15 @@ const navItems = [
   {
     title: "作品介紹",
     subItems: [
-      { title: "最新消息1", href: "/news/1" },
-      { title: "最新消息2", href: "/news/2" },
+      { title: "最新消息1", href: "/news/" },
+      { title: "最新消息2", href: "/news/" },
     ],
   },
   {
     title: "關於我",
     subItems: [
-      { title: "分店1", href: "/stores/1" },
-      { title: "分店2", href: "/stores/2" },
+      { title: "分店1", href: "/stores/" },
+      { title: "分店2", href: "/stores/" },
     ],
   },
 ];

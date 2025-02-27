@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import ToastList from "@/components/ui/feedback/toast-list";
-import { ProductDialog } from "@/components/product/common/ProductDialog";
 
 const TestPage2: React.FC = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <div className="p-4 space-y-4">
@@ -34,18 +32,7 @@ const TestPage2: React.FC = () => {
         請先選取選項
       </button>
 
-      <button className="px-4 py-2 bg-teal-500 text-white rounded" onClick={() => setIsDialogOpen(true)}>
-        打開商品購物車 Dialog
-      </button>
 
-      {/* `ProductDialog` */}
-      <ProductDialog
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-        image="/images/product1.jfif"
-        title="這是一個商品呦"
-        price="NT$690"
-      />
     </div>
   );
 };

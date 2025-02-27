@@ -17,6 +17,12 @@ interface ProductCardProps {
   isNew?: boolean;
   isSoldOut?: boolean;
   isHotSale?: boolean;
+  isConfigurable?: boolean;
+  variants?: {
+    color: string;
+    image: string[];
+    sizes: { size: string; stock: number }[];
+  }[];
   variant?: "home" | "productListMobile" | "productList" | "recommend";
 }
 
@@ -129,6 +135,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isNew = false,
   isSoldOut = false,
   isHotSale = false,
+  isConfigurable,
+  variants,
   variant = "productList",
 }) => {
   const displayImage = Array.isArray(image) ? image[0] : image;
@@ -213,6 +221,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
         image={displayImage}
         title={title}
         price={`NT$${price}`}
+        isConfigurable={isConfigurable ?? false}
+        variants={variants}
       />
     </>
   );

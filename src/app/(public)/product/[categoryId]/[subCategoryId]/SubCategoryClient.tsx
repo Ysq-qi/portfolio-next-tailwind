@@ -39,13 +39,22 @@ const SubCategoryClient: React.FC = () => {
     const productsRaw = allProducts[categoryId][subCategoryId] || [];
 
     return productsRaw.map((pd) => ({
+      // 基礎屬性
       id: pd.id,
       image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
       title: pd.title,
       price: pd.price,
+
+      // 商品卡片
       isNew: pd.isNew,
       isSoldOut: pd.isSoldOut,
       isHotSale: pd.isHotSale,
+
+      // 商品顏色/尺寸選擇按紐
+      isConfigurable: pd.isConfigurable ?? false,
+      variants: pd.variants ?? [],
+
+      // 商品篩選
       shippingMethods: pd.shippingMethods ?? [],
       paymentMethods: pd.paymentMethods ?? [],
     }));

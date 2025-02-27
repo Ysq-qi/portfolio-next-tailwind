@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/form/button";
 interface ActionButtonProps {
   type?: "default" | "special" | "store";
   onClick?: () => void;
+  className?: string;
 }
 
 const buttonTextMap: Record<NonNullable<ActionButtonProps["type"]>, string> = {

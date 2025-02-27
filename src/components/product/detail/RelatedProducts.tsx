@@ -5,8 +5,15 @@ import { ContentSlider } from "@/components/ui/navigation/content-slider";
 import ProductCard from "@/components/product/common/ProductCard";
 
 interface RelatedProductsProps {
-  relatedProducts: { id: string; image: string; title: string; price: number }[];
+  relatedProducts: { id: string; image: string; title: string; price: number; isConfigurable?: boolean; variants?: ProductVariant[]; }[];
 }
+
+interface ProductVariant {
+  color: string;
+  image: string[];
+  sizes: { size: string; stock: number }[];
+}
+
 
 const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts = [] }) => {
   return (
@@ -23,6 +30,8 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts = [] 
               image={product.image}
               title={product.title}
               price={product.price}
+              isConfigurable={false}  // 預設值 false
+              variants={[]}           // 預設值 []
               variant="recommend"
             />
           ))}
@@ -39,6 +48,8 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ relatedProducts = [] 
               image={product.image}
               title={product.title}
               price={product.price}
+              isConfigurable={false}
+              variants={[]}
               variant="recommend"
             />
           ))}

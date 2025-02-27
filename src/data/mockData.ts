@@ -148,7 +148,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-001.jpg",
+              "/images/productimages/product-food-fast-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -252,7 +264,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "將墨魚的鮮美海味融合大蒜香氣，再加入魚露製作醬汁，只需與麵條拌勻即可享用。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-003.jpg",
+              "/images/productimages/product-food-fast-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -344,7 +368,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加鱈魚子並以昆布粉提鮮，只需與麵條拌勻，撒上內附海苔，即可輕鬆品嚐道地風味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-005.jpg",
+              "/images/productimages/product-food-fast-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -434,7 +470,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "充滿牛肝菌香氣的醬汁，搭配炒洋蔥和蘑菇，味道濃郁。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-007.jpg",
+              "/images/productimages/product-food-fast-008.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -524,7 +572,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "鮮美的蟹肉醬汁中加入完熟番茄和鮮奶油，增添順滑濃郁的風味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-009.jpg",
+              "/images/productimages/product-food-fast-010.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -614,7 +674,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "將南瓜的甜味融合鮮奶油，再加入洋蔥、紅腰豆等五種蔬菜，可攝取到每日所需１／３份的蔬菜。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-011.jpg",
+              "/images/productimages/product-food-fast-012.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -704,7 +776,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "將番茄的酸味融合羅勒、百里香、奧勒岡等香草，再加入馬鈴薯、高麗菜等四種蔬菜，可攝取到每日所需１／３份的蔬菜。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-013.jpg",
+              "/images/productimages/product-food-fast-014.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -794,7 +878,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "玉米研磨成粉做成奶香濃郁的濃湯，綴以毛豆及玉米粒，熱水沖泡就能品嚐配料豐富的杯湯。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-015.jpg",
+              "/images/productimages/product-food-fast-016.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -884,7 +980,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "甘甜味噌湯底加入海帶芽與豆腐，以柴魚片提升鮮味層次，熱水沖泡就能品嚐配料豐富的杯湯。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-017.jpg",
+              "/images/productimages/product-food-fast-018.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: false,
         isSoldOut: false,
         isHotSale: false,
@@ -974,7 +1082,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "番茄湯底加入高麗菜、洋蔥及紅蘿蔔，充分發揮蔬菜酸甜滋味，熱水沖泡就能品嚐配料豐富的杯湯。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-fast-019.jpg",
+              "/images/productimages/product-food-fast-020.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: false,
         isSoldOut: false,
         isHotSale: false,
@@ -1068,7 +1188,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-001.jpg",
+          "/images/productimages/product-food-snack-002.png",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -1167,7 +1299,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "台農17號金鑽鳳梨經低溫乾燥將美味濃縮，無添加糖、色素及其他添加物，品嚐細緻果肉纖維與酸甜滋味。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-003.jpg",
+          "/images/productimages/product-food-snack-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -1257,7 +1401,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "大紅品種紅肉火龍果經低溫乾燥將美味濃縮，無添加糖、色素及其他添加物，品嚐軟糯果肉纖維與清甜風味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-005.jpg",
+          "/images/productimages/product-food-snack-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -1347,7 +1503,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "愛文芒果經低溫乾燥將美味濃縮，無添加糖、色素及其他添加物，品嚐富嚼勁的果肉口感與濃郁香氣。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-007.jpg",
+          "/images/productimages/product-food-snack-008.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -1437,7 +1605,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "麵糊中拌入醇厚的可可醬，經爐火層層堆疊的烘烤，切成方便食用的大小，保留烤色不均及形狀不規則的部分，為一款樸實美味的日常甜點。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-009.jpg",
+          "/images/productimages/product-food-snack-010.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -1527,7 +1707,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "麵糊中拌入精磨的紅茶粉，經爐火層層堆疊的烘烤，切成方便食用的大小，保留烤色不均及形狀不規則的部分，為一款樸實美味的日常甜點。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-011.jpg",
+          "/images/productimages/product-food-snack-012.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -1617,7 +1809,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加柳橙果汁與魚鱗膠原蛋白於軟糖中，包裏砂糖、使風味酸甜平衡，同時享受嚼勁口感及柳橙的清爽滋味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-013.jpg",
+          "/images/productimages/product-food-snack-014.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -1707,7 +1911,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加草莓果汁與魚鱗膠原蛋白於軟糖中，包裹砂糖，使風味酸甜平衡，同時享受嚼勁口感及草莓的鮮甜滋味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-015.jpg",
+          "/images/productimages/product-food-snack-016.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -1797,7 +2013,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加葡萄果汁與魚鱗膠原蛋白於軟糖中，包裹砂糖，使風味酸甜平衡，同時享受嚼勁口感及葡萄的甘醇滋味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-017.jpg",
+          "/images/productimages/product-food-snack-018.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: false,
         isSoldOut: false,
         isHotSale: false,
@@ -1887,7 +2115,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加蘋果果汁與魚鱗膠原蛋白於軟糖中，包裹砂糖，使風味酸甜平衡，同時享受嚼勁口感及蘋果的香甜滋味。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-snack-019.jpg",
+          "/images/productimages/product-food-snack-020.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: false,
         isSoldOut: false,
         isHotSale: false,
@@ -1981,7 +2221,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-001.jpg",
+          "/images/productimages/product-food-drink-002.png",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -2080,7 +2332,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "感受檸檬馬鞭草加洋甘菊的清爽香氣與順口。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-003.jpg",
+          "/images/productimages/product-food-drink-004.png",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -2170,7 +2434,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "感受薰衣草加檸檬香茅的療癒香氣與溫潤口感。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-005.jpg",
+          "/images/productimages/product-food-drink-006.png",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -2260,7 +2536,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用山楂、玫瑰及洛神花等草本調配，飽含植物原本的氣味，風味酸甜芬芳，適合每日飲用的無咖啡因茶。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-007.jpg",
+          "/images/productimages/product-food-drink-008.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -2350,7 +2638,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "台茶18號經完全發酵製成，品嚐厚實口感與花果香。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-009.jpg",
+          "/images/productimages/product-food-drink-010.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -2440,7 +2740,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "冬季第二次生長的茶菁嫩芽半發酵製成，品嚐滑順口感與清揚香。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-011.jpg",
+          "/images/productimages/product-food-drink-012.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -2530,7 +2842,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "茶菁嫩芽半發酵後，以文火細細烤焙，品嚐溫潤口感與焙火香。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-013.jpg",
+          "/images/productimages/product-food-drink-014.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -2620,7 +2944,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "南投阿薩姆與紅韻紅茶加入決明子一同焙炒，為茶葉濃郁花果香氣增添圓潤渾厚層次。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-015.jpg",
+          "/images/productimages/product-food-drink-016.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -2710,7 +3046,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加水蜜桃果汁，芬芳順口的水蜜桃風味尼爾吉里紅茶。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-food-drink-017.png",
+          "/images/productimages/product-food-drink-018.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: false,
         isSoldOut: false,
         isHotSale: false,
@@ -2800,7 +3148,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "添加草莓果汁，酸甜可口的草莓風味斯里蘭卡紅茶。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+              "/images/productimages/product-food-drink-019.png",
+              "/images/productimages/product-food-drink-020.jpg",
+            ],        
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: false,
         isSoldOut: false,
         isHotSale: false,
@@ -2897,7 +3257,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+            "/images/productimages/product-women-outerwear-001.jpg",
+            "/images/productimages/product-women-outerwear-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+            "/images/productimages/product-women-outerwear-001.jpg",
+            "/images/productimages/product-women-outerwear-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -2954,7 +3342,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的外套。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+            "/images/productimages/product-women-outerwear-003.jpg",
+            "/images/productimages/product-women-outerwear-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+            "/images/productimages/product-women-outerwear-003.jpg",
+            "/images/productimages/product-women-outerwear-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3002,7 +3418,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的外套。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-outerwear-005.jpg",
+          "/images/productimages/product-women-outerwear-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-outerwear-005.jpg",
+          "/images/productimages/product-women-outerwear-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -3055,7 +3499,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-shirts-001.jpg",
+          "/images/productimages/product-women-shirts-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-shirts-001.jpg",
+          "/images/productimages/product-women-shirts-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3112,7 +3584,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "水洗棉經微起毛加工，打造出柔軟觸感。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-shirts-003.jpg",
+          "/images/productimages/product-women-shirts-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-shirts-003.jpg",
+          "/images/productimages/product-women-shirts-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3160,7 +3660,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的柔軟紗織材質。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-shirts-005.jpg",
+          "/images/productimages/product-women-shirts-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-shirts-005.jpg",
+          "/images/productimages/product-women-shirts-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -3213,7 +3741,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-pants-001.jpg",
+          "/images/productimages/product-women-pants-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-pants-001.jpg",
+          "/images/productimages/product-women-pants-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3270,7 +3826,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "採用具伸縮性的布料，提升穿著舒適感。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-pants-003.jpg",
+          "/images/productimages/product-women-pants-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-pants-003.jpg",
+          "/images/productimages/product-women-pants-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3318,7 +3902,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "編織成含有空氣的雙層結構，賦予輕柔的穿著感受。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-women-pants-005.jpg",
+          "/images/productimages/product-women-pants-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-women-pants-005.jpg",
+          "/images/productimages/product-women-pants-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -3374,7 +3986,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-outerwear-001.jpg",
+          "/images/productimages/product-men-outerwear-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-outerwear-001.jpg",
+          "/images/productimages/product-men-outerwear-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3431,7 +4071,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的外套。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-outerwear-003.jpg",
+          "/images/productimages/product-men-outerwear-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-outerwear-003.jpg",
+          "/images/productimages/product-men-outerwear-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3479,7 +4147,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的外套。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-outerwear-005.jpg",
+          "/images/productimages/product-men-outerwear-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-outerwear-005.jpg",
+          "/images/productimages/product-men-outerwear-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -3532,7 +4228,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-shirts-001.jpg",
+          "/images/productimages/product-men-shirts-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-shirts-001.jpg",
+          "/images/productimages/product-men-shirts-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3589,7 +4313,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的柔軟紗織材質。使用有機棉製成。使用天然的輕盈纖維、吉貝木棉製成的柔軟紗織材質。使用有機棉製成。使用天然的輕盈纖維、吉貝木棉製成的柔軟紗織材質。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-shirts-003.jpg",
+          "/images/productimages/product-men-shirts-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-shirts-003.jpg",
+          "/images/productimages/product-men-shirts-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3637,7 +4389,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用天然的輕盈纖維、吉貝木棉製成的柔軟紗織材質。使用有機棉製成。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-shirts-005.jpg",
+          "/images/productimages/product-men-shirts-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-shirts-005.jpg",
+          "/images/productimages/product-men-shirts-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -3690,7 +4470,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-pants-001.jpg",
+          "/images/productimages/product-men-pants-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-pants-001.jpg",
+          "/images/productimages/product-men-pants-002.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3747,7 +4555,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用內裏起毛的裏毛素材，製成肌膚觸感佳，穿著感受輕盈的單品。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-pants-003.jpg",
+          "/images/productimages/product-men-pants-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-pants-003.jpg",
+          "/images/productimages/product-men-pants-004.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3795,7 +4631,35 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用100％棉質，製成寬鬆舒適的設計。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: true,
+        variants: [
+          {
+            color: "白色",
+            image: [
+          "/images/productimages/product-men-pants-005.jpg",
+          "/images/productimages/product-men-pants-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 10 },
+              { size: "M", stock: 8 },
+              { size: "L", stock: 12 },
+              { size: "XL", stock: 5 }
+            ]
+          },
+          {
+            color: "黃色",
+            image: [
+          "/images/productimages/product-men-pants-005.jpg",
+          "/images/productimages/product-men-pants-006.jpg",
+            ],
+            sizes: [
+              { size: "S", stock: 5 },
+              { size: "M", stock: 10 },
+              { size: "L", stock: 7 },
+              { size: "XL", stock: 3 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -3850,7 +4714,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-pillows-001.jpg",
+          "/images/productimages/product-bedding-pillows-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3908,7 +4784,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用輕量且富彈力的水鳥羽毛，不易彎曲，可長期使用。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-pillows-003.jpg",
+          "/images/productimages/product-bedding-pillows-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -3957,7 +4845,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "素材為可水洗的聚酯纖維，側面使用高密度布料，可防止蟎蟲。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-pillows-005.jpg",
+          "/images/productimages/product-bedding-pillows-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -4011,7 +4911,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-quilts-001.jpg",
+          "/images/productimages/product-bedding-quilts-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4069,7 +4981,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "棉混莫代爾纖維製作而成。素材具吸濕保溫功能，觸感柔軟光滑。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-quilts-003.jpg",
+          "/images/productimages/product-bedding-quilts-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4118,7 +5042,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "使用聚酯纖維素材製成。洗滌後快速乾燥，清潔保養皆十分容易。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-quilts-005.jpg",
+          "/images/productimages/product-bedding-quilts-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -4172,7 +5108,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-sheets-001.jpg",
+          "/images/productimages/product-bedding-sheets-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4230,7 +5178,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "棉混莫代爾纖維製作而成。素材具吸濕保溫功能，觸感柔軟光滑。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-sheets-003.jpg",
+          "/images/productimages/product-bedding-sheets-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4279,7 +5239,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "棉混莫代爾纖維製作而成。素材具吸濕保溫功能，觸感柔軟光滑。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-bedding-sheets-005.jpg",
+          "/images/productimages/product-bedding-sheets-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -4335,7 +5307,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-tables-001.jpg",
+          "/images/productimages/product-furniture-tables-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4393,7 +5377,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "鋼管搭配木製桌板的簡約摺疊桌。不使用時，可以將其折疊收納以節省空間。可與同系列折疊椅配色使用。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-tables-003.jpg",
+          "/images/productimages/product-furniture-tables-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4442,7 +5438,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "不特別篩選木紋、節點、顏色濃淡不一的天然木材，有效利用資源。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-tables-005.jpg",
+          "/images/productimages/product-furniture-tables-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -4496,7 +5504,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-chairs-001.jpg",
+          "/images/productimages/product-furniture-chairs-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4554,7 +5574,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "鋼管搭配木製座面的簡約折疊椅。不使用時，可以將其折疊收納以節省空間。可與同系列折疊桌配色使用。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-chairs-003.jpg",
+          "/images/productimages/product-furniture-chairs-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4603,7 +5635,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "椅背和座面十分寬敞，曲線設計，坐起來非常舒適。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-chairs-005.jpg",
+          "/images/productimages/product-furniture-chairs-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,
@@ -4657,7 +5701,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         descriptionImage:[
           { image: "" },
         ],
-        stock: 80,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-beanbag-001.jpg",
+          "/images/productimages/product-furniture-beanbag-002.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4715,7 +5771,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "採用易於清潔的聚酯纖維面料製成，符合使用者身形的長方形本體專用布套。",
         descriptionImage: [{ image: "" }],
-        stock: 50,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-beanbag-003.jpg",
+          "/images/productimages/product-furniture-beanbag-004.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: true,
         isHotSale: true,
@@ -4764,7 +5832,19 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
         ],        
         description: "伸縮素材部分改用耐久性、伸縮性更佳的聚酯纖維材質，內裡填充的超微粒泡棉展現獨特的坐臥感。",
         descriptionImage: [{ image: "" }],
-        stock: 60,
+        isConfigurable: false,
+        variants: [
+          {
+            color: "default",
+            image: [
+          "/images/productimages/product-furniture-beanbag-005.jpg",
+          "/images/productimages/product-furniture-beanbag-006.jpg",
+            ],
+            sizes: [
+              { size: "default", stock: 80 }
+            ]
+          }
+        ],
         isNew: true,
         isSoldOut: false,
         isHotSale: true,

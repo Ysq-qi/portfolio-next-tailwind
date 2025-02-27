@@ -12,6 +12,11 @@ const HomeClient: React.FC = () => {
       <Banner />
       <Categories />
       <ProductList />
+      <ProductList />
+      <ProductList />
+      <ProductList />
+      <ProductList />
+
     </div>
   );
 };

@@ -28,7 +28,7 @@ const UserActions: React.FC<{ className?: string }> = ({ className }) => {
         </button>
       </HoverCardTrigger>
 
-      <HoverCardContent className="w-[180px] p-4">
+      <HoverCardContent className="w-[200px] h-[160px] p-4">
         <ul className="space-y-2 text-sm text-gray-700">
           {userActionItems.map((item, index) => (
             <li key={index}>
