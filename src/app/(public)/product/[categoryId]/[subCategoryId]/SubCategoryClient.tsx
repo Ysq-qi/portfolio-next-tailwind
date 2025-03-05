@@ -3,17 +3,14 @@
 import React, { useEffect, useMemo } from "react";
 import { useParams } from "next/navigation";
 import ProductList from "@/components/product/list/ProductList";
-import { allProducts, categories } from "@/data/mockData";
-import { filterProducts } from "@/lib/utils/filterProducts";
 import { useFilterContext } from "@/context/FilterContext";
+import { categories } from "@/data/mockData";
+import { getProductsBySubCategory } from "@/lib/utils/getProductsBySubCategory";
+import { filterProducts } from "@/lib/utils/filterProducts";
 import { Product } from "@/types";
 
 const SubCategoryClient: React.FC = () => {
-  // 只能在客戶端使用 useParams()
-  const { categoryId, subCategoryId } = useParams() as {
-    categoryId: string;
-    subCategoryId: string;
-  };
+  const { categoryId, subCategoryId } = useParams() as { categoryId: string; subCategoryId: string; };
 
   const {
     selectedMinPrice,
@@ -25,39 +22,15 @@ const SubCategoryClient: React.FC = () => {
     setGlobalMaxPrice,
   } = useFilterContext();
 
-  // 撈出對應的子分類
+  // 撈出對應的子分類ID
   const mainCategory = categories.find((c) => c.categoryId === categoryId);
   const subCategory = mainCategory?.subCategories.find(
     (sub) => sub.labelEn === subCategoryId
   );
 
-  // 模擬撈取商品資料
+  // 使用getProductsBySubCategory去獲取子分類的全部商品
   const mergedProducts: Product[] = useMemo(() => {
-    if (!allProducts[categoryId] || !allProducts[categoryId][subCategoryId]) {
-      return [];
-    }
-    const productsRaw = allProducts[categoryId][subCategoryId] || [];
-
-    return productsRaw.map((pd) => ({
-      // 基礎屬性
-      id: pd.id,
-      image: Array.isArray(pd.image) ? pd.image[0] : pd.image || "",
-      title: pd.title,
-      price: pd.price,
-
-      // 商品卡片
-      isNew: pd.isNew,
-      isSoldOut: pd.isSoldOut,
-      isHotSale: pd.isHotSale,
-
-      // 商品顏色/尺寸選擇按紐
-      isConfigurable: pd.isConfigurable ?? false,
-      variants: pd.variants ?? [],
-
-      // 商品篩選
-      shippingMethods: pd.shippingMethods ?? [],
-      paymentMethods: pd.paymentMethods ?? [],
-    }));
+    return getProductsBySubCategory(categoryId, subCategoryId);
   }, [categoryId, subCategoryId]);
 
   // 根據商品價格動態設定 FilterContext 內的全域最小/最大價
@@ -108,7 +81,7 @@ const SubCategoryClient: React.FC = () => {
     selectedMaxPrice,
   ]);
 
-  // 如果壓根沒有此子分類 → 給個提示
+  // 若找不到子分類 給錯誤處理
   if (!subCategory) {
     return <div className="text-center text-gray-600">此子分類不存在</div>;
   }

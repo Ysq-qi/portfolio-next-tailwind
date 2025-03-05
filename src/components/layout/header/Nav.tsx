@@ -23,17 +23,17 @@ const navItems = [
     ],
   },
   {
-    title: "作品介紹",
+    title: "閒情逸致",
     subItems: [
-      { title: "最新消息1", href: "/news/" },
-      { title: "最新消息2", href: "/news/" },
+      { title: "測試頁面", href: "/test" },
+      { title: "文章列表", href: "/news/" },
     ],
   },
   {
     title: "關於我",
     subItems: [
-      { title: "分店1", href: "/stores/" },
-      { title: "分店2", href: "/stores/" },
+      { title: "關於我", href: "/stores/" },
+      { title: "作品介紹", href: "/stores/" },
     ],
   },
 ];

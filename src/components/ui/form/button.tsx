@@ -19,11 +19,11 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
 
-        /* 導覽列確認 */
+        /* 導覽列 黑色下劃線 */
         navscrollactive: "text-black font-bold relative after:content-[''] after:absolute after:left-0 after:bottom-[-14px] after:w-full after:h-[2px] after:bg-black",
         navscroll: "border-none text-black font-bold border-b-2",
 
-        /* 跳轉更多 */
+        /* 跳轉更多按鈕 */
         action: "border border-gray-800 text-gray-700 font-black rounded-xl min-w-[230px] min-h-[53px] flex items-center justify-center hover:bg-gray-50 transition",
 
       },

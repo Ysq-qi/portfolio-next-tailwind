@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "@/components/layout/header";
-import "@/styles/globals.css";
+import "@/app/globals.css";
 
 export const metadata = {
-  title: "Next.js 實作網站 購物車",
-  description: "Next.js 實作網站 購物車",
+  title: "Next.js 實作網站",
+  description: "Next.js 實作網站",
   icons: {
     icon: "/icons/favicon.ico",
   },

@@ -4,6 +4,7 @@ import { Skeleton } from "@/components/ui/feedback/skeleton";
 
 interface ProductCardSkeletonProps {
   variant?: "home" | "productListMobile" | "productList";
+  claseeName?: string;
 }
 
 const ProductCardSkeleton: React.FC<ProductCardSkeletonProps> = ({

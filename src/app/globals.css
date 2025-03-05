@@ -39,3 +39,23 @@ html, body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* 
+  ---break---
+*/
+
+@layer base {}
+
+/* 
+  ---break---
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+*/

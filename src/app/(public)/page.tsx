@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import HomeClient from "@/app/(public)/home";
+import HomeClient from "@/app/(public)/HomeClient";
 
 export const metadata: Metadata = {
   title: "Next.js網站 | 首頁",

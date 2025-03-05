@@ -12,7 +12,7 @@ import {
 
 import { Separator } from "@/components/ui/utils/separator";
 import { Button } from "@/components/ui/form/button";
-import ProductCardCart from "@/components/ui/data-display/product-card-cart";
+import { CartActionsCard } from "@/components/cart/ProductCardCart";
 
 interface CartItem {
   id: string;
@@ -30,7 +30,7 @@ const mockCartItems: CartItem[] = [
   { id: "6", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 55 },
 ];
 
-const Cart: React.FC<{ className?: string }> = ({ className }) => {
+const CartActions: React.FC<{ className?: string }> = ({ className }) => {
   const [items, setItems] = React.useState<CartItem[]>(mockCartItems);
 
   const removeItem = (id: string) => {
@@ -46,7 +46,16 @@ const Cart: React.FC<{ className?: string }> = ({ className }) => {
           className={`relative flex items-center justify-center w-12 h-12 rounded-full sm:bg-white ${className}`}
         >
           <ShoppingCart className="h-5 w-5 text-gray-700" />
-          <span className="absolute -top-1 -right-1 flex items-center justify-center rounded-full bg-[#7f0019] text-white text-[8px] h-3 w-3 sm:text-xs sm:h-5 sm:w-5">
+          <span
+            className="
+              absolute flex items-center justify-center rounded-full 
+              bg-[#7f0019] text-white 
+              text-[10px] h-4 w-4 
+              sm:text-xs sm:h-[18px] sm:w-[20px] 
+              -top-2 -right-2 
+              sm:top-0 sm:-right-0
+            "
+          >
             {items.length}
           </span>
         </Link>
@@ -77,7 +86,7 @@ const CartContent: React.FC<{
           <div className="space-y-2">
             {items.map((item, index) => (
               <div key={item.id}>
-                <ProductCardCart
+                <CartActionsCard
                   image={item.image}
                   title={item.title}
                   price={item.price}
@@ -93,7 +102,7 @@ const CartContent: React.FC<{
 
       <div className="mt-4">
         <Separator />
-        <Link href="/checkout" className="block mt-4">
+        <Link href="/cart" className="block mt-4">
           <Button variant="dark" className="w-full">
             結帳
           </Button>
@@ -103,4 +112,4 @@ const CartContent: React.FC<{
   );
 };
 
-export default Cart;
+export default CartActions;

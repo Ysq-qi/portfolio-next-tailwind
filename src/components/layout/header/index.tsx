@@ -7,7 +7,7 @@ import Nav from "./Nav";
 import Search from "./Search";
 import { Search as SearchIcon } from "lucide-react";
 import UserActions from "./UserActions";
-import Cart from "./Cart";
+import CartActions from "./CartActions";
 
 const Header: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between gap-5 mr-2">
             <SearchIcon className="relative flex items-center justify-center w-[20px] h-[20px] mr-1 rounded-full bg-gray-100 text-gray-700" />
             <UserActions className="relative flex items-center justify-center w-[28px] h-[28px] rounded-full bg-gray-100" />
-            <Cart className="relative flex items-center justify-center w-[28px] h-[28px] rounded-full bg-gray-100" />
+            <CartActions className="relative flex items-center justify-center w-[28px] h-[28px] rounded-full bg-gray-100" />
           </div>
         </div>
       </header>
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-4">
           <Search className="w-[230px] h-[40px]" />
           <UserActions className="relative flex items-center justify-center w-[50px] h-[50px] rounded-full bg-gray-100" />
-          <Cart className="relative flex items-center justify-center w-[50px] h-[50px] rounded-full bg-gray-100" />
+          <CartActions className="relative flex items-center justify-center w-[50px] h-[50px] rounded-full bg-gray-100" />
         </div>
       </header>
     </>

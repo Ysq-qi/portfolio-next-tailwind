@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import CategoryClient from "./CategoryClient";
+import CategoryClient from "@/app/(public)/product/[categoryId]/CategoryClient";
 
 import { findCategoryById } from "@/lib/utils/findCategoryById";
 
@@ -11,6 +11,10 @@ type Props = {
 
 export const dynamic = "force-dynamic";
 
+/*
+  利用findCategoryById獲取商品主類別的名稱
+  在部屬時直接將動態標題給處理完
+*/
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // 即便資料是同步的 也會強制要求使用await 但使用await 又會造成部屬錯誤  (Next.js 15.1 存在BUG)
   // 使用tsconfig.json exclude 去忽略該檔案的type檢測

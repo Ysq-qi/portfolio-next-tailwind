@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { SmoothScrollNav, SectionData } from "@/components/ui/SmoothScrollNav";
-import { SectionBlock } from "@/components/ui/SectionBlock";
+import { SmoothScrollNav, SectionData, SectionBlock } from "@/components/ui/navigation/scroll-section";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 const TestPage3: React.FC = () => {
@@ -21,7 +20,6 @@ const TestPage3: React.FC = () => {
   return (
     <div className="p-4">
       <SmoothScrollNav sections={sections} onSelect={scrollToSection} className="mb-6" />
-
       <div className="space-y-10">
         <SectionBlock id="section1" title="第一區塊">
           <p>1</p>
@@ -41,7 +39,6 @@ const TestPage3: React.FC = () => {
         <SectionBlock id="section6" title="第六區塊">
           <p>6</p>
         </SectionBlock>
-
       </div>
     </div>
   );

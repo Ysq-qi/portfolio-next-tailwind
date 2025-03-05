@@ -585,9 +585,9 @@ export const allProducts: Record<string, Record<string, ProductDetail[]>> = {
             ]
           }
         ],
-        isNew: true,
+        isNew: false,
         isSoldOut: false,
-        isHotSale: true,
+        isHotSale: false,
         productDetails: [
           { label: "產地", value: "日本" },
           { label: "重量", value: "130g" },

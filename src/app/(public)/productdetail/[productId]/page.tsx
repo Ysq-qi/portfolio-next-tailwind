@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!productId) {
     return {
-      title: "商品不存在 | My Shop",
+      title: "Next.js網站 | 商品不存在",
       description: "找不到該商品，可能已下架。",
     };
   }
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = findProductById(productId);
   if (!product) {
     return {
-      title: "商品不存在 | My Shop",
+      title: "Next.js網站 | 商品不存在",
       description: "找不到該商品，可能已下架。",
     };
   }
@@ -35,7 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : [];
 
   return {
-    metadataBase: new URL("http://localhost:3000"), // 改成正式環境網址
     title: `Next.js網站 | ${product.title}`,
     description: product.description ?? "這裡是商品描述。",
     openGraph: {

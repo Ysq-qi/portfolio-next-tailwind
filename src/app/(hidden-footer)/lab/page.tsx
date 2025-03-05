@@ -2,7 +2,7 @@ import CartClient from "@/app/(hidden-footer)/cart/CartClient";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Next.js網站 | 購物車",
+  title: "Next.js網站 | 其他",
   robots: "noindex, nofollow", 
 };
 

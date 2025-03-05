@@ -1,4 +1,4 @@
-import UnderConstruction from "@/components/ui/under-construction";
+import UnderConstruction from "@/components/error/UnderConstruction";
 
 export default function Page() {
   return <UnderConstruction />;
