@@ -4,7 +4,7 @@ import React from "react";
 import Banner from "@/components/home/Banner";
 import Categories from "@/components/home/Categories";
 import LoadingMoreProductList from "@/components/home/LoadingMoreProductList";
-import ProductList from "@/components/home/ProductList";
+import ProductList from "@/components/home/HomeProductList";
 
 import { getAllProducts } from "@/lib/utils/getAllProducts";
 import { getProductsByCategory } from "@/lib/utils/getProductsByCategory";

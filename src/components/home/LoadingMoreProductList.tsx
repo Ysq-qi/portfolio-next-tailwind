@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Loading from "@/components/ui/feedback/loading";
+import { HomeAllProductTooltip } from "@/components/ui/overlay/tooltip-list";
 import ProductCard from "@/components/product/common/ProductCard";
 import ProductCardSkeleton from "@/components/ui/feedback/product-card-skeleton";
 import ActionButton from "@/components/ui/navigation/actionbutton";
@@ -46,7 +47,9 @@ const LoadingMoreProductList: React.FC<LoadingMoreProductListProps> = ({ product
 
   return (
     <section className="w-full max-w-[1200px] mx-auto mt-4 mb-20">
-      <div className="text-xl font-semibold pb-6">全部商品</div>
+      <HomeAllProductTooltip>
+        <div className="text-xl font-semibold pb-6">全部商品</div>
+      </HomeAllProductTooltip>
 
       {/* 產品列表 */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-4">

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { HomeCategoryProductTooltip } from "@/components/ui/overlay/tooltip-list";
 import ProductCard from "@/components/product/common/ProductCard";
 import ProductCardSkeleton from "@/components/ui/feedback/product-card-skeleton";
 import ActionButton from "@/components/ui/navigation/actionbutton";
@@ -30,8 +31,10 @@ const ProductList: React.FC<ProductListProps> = ({ products, categoryId, categor
 
   return (
     <section className="w-full max-w-[1200px] mx-auto my-4">
-      <div className="text-xl font-semibold pb-6">{categoryTitle}</div>
-
+      <HomeCategoryProductTooltip>
+        <div className="text-xl font-semibold pb-6">{categoryTitle}</div>
+      </HomeCategoryProductTooltip>
+      
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-4">
         {displayedProducts.map((product, index) =>
           isLoading ? (

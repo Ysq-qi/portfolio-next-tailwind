@@ -9,7 +9,7 @@ const userActionItems = [
   { title: "會員專區", href: "/member" },
   { title: "我的收藏", href: "/member/favorites" },
   { title: "我的優惠券", href: "/member/coupons" },
-  { title: "會員登入/註冊", href: "/login" },
+  { title: "會員登入/註冊", href: "/auth" },
 ];
 
 const UserActions: React.FC<{ className?: string }> = ({ className }) => {

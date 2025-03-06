@@ -28,3 +28,25 @@ export const InfoTooltip: React.FC<{ children: React.ReactNode }> = ({ children 
     </Tooltip>
   </TooltipProvider>
 );
+
+export const HomeAllProductTooltip: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>{children}</TooltipTrigger>
+      <TooltipBox side="left" align="start" alignOffset={-12} sideOffset={15} className="w-[180px] text-xs leading-relaxed">
+        這個區域用來展示分批加載商品 <br/> 按鈕可以點擊加載更多商品
+      </TooltipBox>
+    </Tooltip>
+  </TooltipProvider>
+);
+
+export const HomeCategoryProductTooltip: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>{children}</TooltipTrigger>
+      <TooltipBox side="left" align="start" alignOffset={-12} sideOffset={15} className="w-[200px] text-xs leading-relaxed">
+        這個區域用來展示主分類商品顯示 <br/> 按鈕可以點擊跳轉至商品列表
+      </TooltipBox>
+    </Tooltip>
+  </TooltipProvider>
+);

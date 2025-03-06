@@ -34,17 +34,17 @@ const navGroups = [
     ],
   },
   {
-    title: "作品介紹",
+    title: "閒情逸致",
     subItems: [
-      { title: "最新消息1", href: "/news/1" },
-      { title: "最新消息2", href: "/news/2" },
+      { title: "測試頁面", href: "/test" },
+      { title: "文章列表", href: "/about/news" },
     ],
   },
   {
     title: "關於我",
     subItems: [
-      { title: "分店1", href: "/stores/1" },
-      { title: "分店2", href: "/stores/2" },
+      { title: "關於我", href: "/about" },
+      { title: "作品介紹", href: "/about/introduce" },
     ],
   },
   {
@@ -54,7 +54,7 @@ const navGroups = [
       { title: "會員專區", href: "/member" },
       { title: "我的收藏", href: "/member/favorites" },
       { title: "我的優惠券", href: "/member/coupons" },
-      { title: "會員登入/註冊", href: "/login" },
+      { title: "會員登入/註冊", href: "/auth" },
     ],
   },
 ];

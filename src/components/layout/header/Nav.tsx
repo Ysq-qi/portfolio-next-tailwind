@@ -26,14 +26,14 @@ const navItems = [
     title: "閒情逸致",
     subItems: [
       { title: "測試頁面", href: "/test" },
-      { title: "文章列表", href: "/news/" },
+      { title: "文章列表", href: "/about/news/" },
     ],
   },
   {
     title: "關於我",
     subItems: [
-      { title: "關於我", href: "/stores/" },
-      { title: "作品介紹", href: "/stores/" },
+      { title: "關於我", href: "/about" },
+      { title: "作品介紹", href: "/about/introduce" },
     ],
   },
 ];
