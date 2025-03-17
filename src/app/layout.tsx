@@ -15,7 +15,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="zh-TW">
       <body className="font-sans app-wrapper">
-        <Providers>  {/* 提供UI使用 */}
+        <Providers>  {/* 提供Redux & UI使用 */}
           {children}
         </Providers>
       </body>

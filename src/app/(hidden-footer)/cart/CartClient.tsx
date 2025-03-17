@@ -7,48 +7,52 @@ import { CartCard } from "@/components/cart/ProductCardCart";
 import { ContentSlider } from "@/components/ui/navigation/content-slider";
 import ProductCard from "@/components/product/common/ProductCard";
 import { CurrencyTooltip } from "@/components/ui/overlay/tooltip-list";
+import { CartItem } from "@/types/index"
 
-interface CartItem {
-  id: string;
-  image: string;
-  title: string;
-  price: number;
-}
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, updateQuantity, initializeCart } from "@/lib/features/cartSlice";
+import { RootState } from "@/lib/store";
 
-// 模擬購物車商品數據
+/* 模擬購物車商品數據
 const mockCartItems: CartItem[] = [
-  { id: "1", image: "/images/product1.jpg", title: "薄片 海鹽焦糖巧克力", price: 89 },
-  { id: "2", image: "/images/product2.jpg", title: "無選別白可可葡萄乾", price: 55 },
-  { id: "3", image: "/images/product3.jpg", title: "無選別白可可葡萄乾", price: 120 },
-  { id: "4", image: "/images/product4.jpg", title: "無選別白可可葡萄乾", price: 89 },
-  { id: "5", image: "/images/product3.jpg", title: "無選別白可可葡萄乾", price: 99 },
-  { id: "6", image: "/images/product2.jpg", title: "無選別白可可葡萄乾", price: 109 },
-  { id: "7", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 50 },
-  { id: "8", image: "/images/product3.jpg", title: "無選別白可可葡萄乾", price: 129 },
-  { id: "9", image: "/images/product4.jpg", title: "無選別白可可葡萄乾", price: 88 },
+  { id: "1", image: "/images/product1.jpg", title: "薄片 海鹽焦糖巧克力", price: 89 , quantity: 1},
+  { id: "2", image: "/images/product2.jpg", title: "無選別白可可葡萄乾", price: 55, quantity: 1 },
+  { id: "3", image: "/images/product3.jpg", title: "無選別白可可葡萄乾", price: 120, quantity: 1 },
+  { id: "4", image: "/images/product4.jpg", title: "無選別白可可葡萄乾", price: 89, quantity: 1 },
+  { id: "5", image: "/images/product3.jpg", title: "無選別白可可葡萄乾", price: 99, quantity: 1 },
+  { id: "6", image: "/images/product2.jpg", title: "無選別白可可葡萄乾", price: 109, quantity: 1 },
+  { id: "7", image: "/images/product1.jpg", title: "無選別白可可葡萄乾", price: 50, quantity: 1 },
+  { id: "8", image: "/images/product3.jpg", title: "無選別白可可葡萄乾", price: 129, quantity: 1 },
+  { id: "9", image: "/images/product4.jpg", title: "無選別白可可葡萄乾", price: 88, quantity: 1 },
 ];
+*/
 
 // 模擬商品推薦數據
 const mockRecommendedItems: CartItem[] = [
-  { id: "10", image: "/images/product2.jpg", title: "可可杏仁脆片", price: 120 },
-  { id: "11", image: "/images/product3.jpg", title: "夏威夷豆巧克力", price: 150 },
-  { id: "12", image: "/images/product4.jpg", title: "宇治抹茶餅乾", price: 80 },
-  { id: "13", image: "/images/product3.jpg", title: "草莓牛奶糖", price: 99 },
-  { id: "14", image: "/images/product2.jpg", title: "蜂蜜烤堅果", price: 110 },
-  { id: "15", image: "/images/product1.jpg", title: "焦糖瑪奇朵咖啡豆", price: 200 },
-  { id: "16", image: "/images/product2.jpg", title: "黑芝麻糊餅乾", price: 75 },
-  { id: "17", image: "/images/product3.jpg", title: "抹茶拿鐵粉", price: 95 },
-  { id: "18", image: "/images/product4.jpg", title: "濃厚可可粉", price: 130 },
+  { id: "10", image: "/images/product2.jpg", title: "可可杏仁脆片", price: 120, quantity: 1 },
+  { id: "11", image: "/images/product3.jpg", title: "夏威夷豆巧克力", price: 150, quantity: 1 },
+  { id: "12", image: "/images/product4.jpg", title: "宇治抹茶餅乾", price: 80, quantity: 1 },
+  { id: "13", image: "/images/product3.jpg", title: "草莓牛奶糖", price: 99, quantity: 1 },
+  { id: "14", image: "/images/product2.jpg", title: "蜂蜜烤堅果", price: 110, quantity: 1 },
+  { id: "15", image: "/images/product1.jpg", title: "焦糖瑪奇朵咖啡豆", price: 200, quantity: 1 },
+  { id: "16", image: "/images/product2.jpg", title: "黑芝麻糊餅乾", price: 75, quantity: 1 },
+  { id: "17", image: "/images/product3.jpg", title: "抹茶拿鐵粉", price: 95, quantity: 1 },
+  { id: "18", image: "/images/product4.jpg", title: "濃厚可可粉", price: 130, quantity: 1 },
 ];
 
 const CartClient: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItems);
-  const [quantities, setQuantities] = useState<{ [key: string]: number }>(
-    cartItems.reduce((acc, item) => ({ ...acc, [item.id]: 1 }), {})
-  );
+  const dispatch = useDispatch();
+
+  // 獲取來自cartSlice的cartItems (必須在上方)
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+
+  // 商品數量變化
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
+
 
   // 監聽視窗滾動軸狀態（控制是否加上 mb-[100px]）
   const [hasScrollbar, setHasScrollbar] = useState(false);
+
   useEffect(() => {
     const checkScrollbar = () => {
       const hasScroll = document.documentElement.scrollHeight > window.innerHeight;
@@ -59,31 +63,37 @@ const CartClient: React.FC = () => {
     return () => window.removeEventListener("resize", checkScrollbar);
   }, [cartItems]);
 
+  // 確保相同商品進行重複添加至購物車時 數量能夠正確增加
+  useEffect(() => {
+    const newQuantities = cartItems.reduce((acc, item) => {
+      acc[item.id] = item.quantity ?? 1;
+      return acc;
+    }, {} as { [key: string]: number });
+
+    setQuantities(newQuantities);
+  }, [cartItems]);
+
+  // 確保購物車數據從 localStorage 載入
+  useEffect(() => {
+    dispatch(initializeCart());
+  }, [dispatch]);
+
   
   // 數量增加 (最多20)
   const increaseQuantity = (id: string) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.min(20, prev[id] + 1),
-    }));
+    dispatch(updateQuantity({ id, change: 1 }));
   };
 
   // 數量減少 (最少1)
   const decreaseQuantity = (id: string) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.max(1, prev[id] - 1),
-    }));
+    dispatch(updateQuantity({ id, change: -1 }));
   };
+
   // 刪除商品
   const removeItem = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-    setQuantities((prev) => {
-      const updatedQuantities = { ...prev };
-      delete updatedQuantities[id];
-      return updatedQuantities;
-    });
+    dispatch(removeFromCart(id));
   };
+
 
   // 計算小計金額
   const totalPrice = cartItems.reduce((sum, item) => {
@@ -103,16 +113,16 @@ const CartClient: React.FC = () => {
             <h2 className="text-2xl font-semibold ml-4 mt-6">購物車</h2>
             <div className="w-[780px] min-h-[400px] bg-white rounded-xl mx-2 py-8 flex flex-col items-center justify-start gap-4">
               {cartItems.length > 0 ? (
-                cartItems.map((item) => (
-                  <div key={item.id} className="w-full flex justify-center">
+                cartItems.map(({ id, image, title, price, quantity }) => (
+                  <div key={id} className="w-full flex justify-center">
                     <CartCard
-                      image={item.image}
-                      title={item.title}
-                      price={item.price * quantities[item.id]}
-                      quantity={quantities[item.id]}
-                      increaseQuantity={() => increaseQuantity(item.id)}
-                      decreaseQuantity={() => decreaseQuantity(item.id)}
-                      onRemove={() => removeItem(item.id)}
+                      image={image}
+                      title={title}
+                      price={price * quantity}
+                      quantity={quantity}
+                      increaseQuantity={() => increaseQuantity(id)}
+                      decreaseQuantity={() => decreaseQuantity(id)}
+                      onRemove={() => removeItem(id)}
                     />
                   </div>
                 ))

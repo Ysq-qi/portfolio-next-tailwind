@@ -48,7 +48,7 @@ export interface Product {
   id: string;
   title: string;
   price: number;
-  image: string;
+  image: string | string[];
   isConfigurable: boolean;
   variants: ProductVariant[];
   isNew?: boolean;
@@ -56,4 +56,15 @@ export interface Product {
   isHotSale?: boolean;
   shippingMethods?: string[];
   paymentMethods?: string[];
+}
+
+// 定義購物車商品類型
+export interface CartItem {
+  id: string;
+  image: string;
+  title: string;
+  price: number;
+  quantity: number;
+  color?: string;
+  size?: string;
 }

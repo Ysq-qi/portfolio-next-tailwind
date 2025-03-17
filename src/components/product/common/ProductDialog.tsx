@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/overlay/dialog";
 import { Button } from "@/components/ui/form/button";
 import { Separator } from "@/components/ui/utils/separator";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/lib/features/cartSlice";
 import Image from "next/image";
 
 interface ProductVariant {
@@ -21,9 +23,10 @@ interface ProductDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 
-  image: string;   // 用於顯示預設圖片 (e.g. 先顯示第一張)
+  id: string;
+  image: string;
   title: string;
-  price: string;
+  price: number;
 
   isConfigurable: boolean;
   variants?: ProductVariant[];
@@ -34,6 +37,7 @@ interface ProductDialogProps {
 export function ProductDialog({
   open,
   onOpenChange,
+  id,
   image,
   title,
   price,
@@ -45,6 +49,8 @@ export function ProductDialog({
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+
+  const dispatch = useDispatch(); 
 
   // 初始化 Dialog 打開後 預設第一個顏色&尺寸
   useEffect(() => {
@@ -67,12 +73,35 @@ export function ProductDialog({
     }
   }, [selectedColor, isConfigurable, variants]);
 
-  // 找到當前 variant
+  /*
+    使用let是因為要允許重新被賦值
+  */
   let currentVariant: ProductVariant | null = null;
   if (isConfigurable && variants && selectedColor) {
     const found = variants.find((v) => v.color === selectedColor);
     currentVariant = found ?? null;
   }
+
+  // 加入購物車函式
+  const handleAddToCart = () => {
+    // 確保必要的商品資訊完整
+    if (!id || !title || price == null) {
+      return;
+    }
+
+    const itemToAdd = {
+      id,
+      image: Array.isArray(image) ? image[0] : image,
+      title,
+      price,
+      quantity: Math.max(1, quantity),
+      ...(isConfigurable && selectedColor ? { color: selectedColor } : {}),
+      ...(isConfigurable && selectedSize ? { size: selectedSize } : {}),
+    };
+
+    dispatch(addToCart(itemToAdd));
+    onOpenChange(false);
+  };
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
@@ -100,13 +129,13 @@ export function ProductDialog({
           {/* 商品資訊 */}
           <div className="flex flex-col items-end mr-2">
             <span className="text-[#7f0019] font-bold text-lg mb-8">
-              {price}
+              NT${price}
             </span>
             <SizeChartButton categories={categories} />
           </div>
         </div>
 
-        {/* 如果是可配置商品 → 顯示顏色選擇器、尺寸選擇器 */}
+        {/* 如果是可配置商品 -> 顯示顏色選擇器、尺寸選擇器 */}
         {isConfigurable && variants && (
           <>
             <Separator className="my-2" />
@@ -130,6 +159,7 @@ export function ProductDialog({
           quantity={quantity}
           increase={increaseQuantity}
           decrease={decreaseQuantity}
+          onAddToCart={handleAddToCart}
         />
       </DialogContent>
     </Dialog>
@@ -218,7 +248,8 @@ const QuantitySelector: React.FC<{
   quantity: number;
   increase: () => void;
   decrease: () => void;
-}> = ({ quantity, increase, decrease }) => (
+  onAddToCart: () => void;
+}> = ({ quantity, increase, decrease, onAddToCart }) => (
   <div className="flex items-center justify-between mt-4">
     {/* 數量調整 */}
     <div className="flex items-center space-x-2">
@@ -232,7 +263,10 @@ const QuantitySelector: React.FC<{
     </div>
 
     {/* 加入購物車按鈕 */}
-    <Button className="w-40 h-10 rounded-xl text-white bg-gray-800 hover:bg-gray-700">
+    <Button
+      className="w-40 h-10 rounded-xl text-white bg-gray-800 hover:bg-gray-700"
+      onClick={onAddToCart}
+    >
       加入購物車
     </Button>
   </div>

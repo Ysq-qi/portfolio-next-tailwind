@@ -218,9 +218,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <ProductDialog
         open={dialogOpen}
         onOpenChange={setDialogOpen}
+        id={id}
         image={displayImage}
         title={title}
-        price={`NT$${price}`}
+        price={price}
         isConfigurable={isConfigurable ?? false}
         variants={variants}
       />
